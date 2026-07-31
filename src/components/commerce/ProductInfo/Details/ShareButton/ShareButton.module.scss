@@ -1,0 +1,7 @@
+@use '../../../../../styles/globals' as *;
+
+.shareButton__icon {
+  width: fluid(24px);
+  height: fluid(24px);
+  color: $color-surface-mid;
+}

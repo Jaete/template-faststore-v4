@@ -1,0 +1,30 @@
+@use '../../../../styles/globals' as *;
+
+.filterDrawer {
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__titleIcon {
+    flex: none;
+    width: 16px;
+    height: 16px;
+    color: $color-brand-blue;
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 16px;
+    background: $color-surface-lighter;
+
+    > * {
+      flex: 1;
+      height: 40px;
+    }
+  }
+}

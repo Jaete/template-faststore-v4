@@ -1,0 +1,30 @@
+@use '../../../../../styles/globals' as *;
+
+.buyBlock {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: fluid(16px);
+  width: 100%;
+  height: 44px;
+
+  @include mobile {
+    gap: 16px;
+    height: 44px;
+  }
+
+  &__quantitySelector {
+    --quantity-selector-width: #{fluid(125px)};
+    --quantity-selector-height: 44px;
+    flex: none;
+
+    @include mobile {
+      --quantity-selector-width: 125px;
+      --quantity-selector-height: 44px;
+    }
+  }
+
+  > :last-child {
+    flex: 1;
+  }
+}

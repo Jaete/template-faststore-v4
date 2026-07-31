@@ -1,0 +1,57 @@
+{
+  "$extends": ["#/$defs/base-component"],
+  "$componentKey": "ProductGrid",
+  "$componentTitle": "Grid de Produtos",
+  "type": "object",
+  "required": [],
+  "properties": {
+    "emptyStateMessage": {
+      "title": "Mensagem de categoria vazia",
+      "description": "Exibida quando a categoria/filtro atual não retorna nenhum produto.",
+      "type": "string",
+    },
+    "priceEmptyStateMessage": {
+      "title": "Mensagem de faixa de preço vazia",
+      "description": "Exibida quando o filtro de faixa de preço (client-side) não deixa nenhum produto na exibição.",
+      "type": "string",
+    },
+    "loadMoreLabel": {
+      "title": "Label do botão \"Carregar mais\"",
+      "type": "string",
+    },
+    "allowedFacets": {
+      "title": "Facetas permitidas no filtro",
+      "description": "Labels das facetas de especificação (comparação sem acentuação/maiúsculas) que podem aparecer na coluna de filtros. As demais facetas retornadas pela busca são ignoradas. Vazio = usa a lista padrão do código.",
+      "type": "array",
+      // Itens são objetos { label } (e não string pura) de propósito: o editor
+      // RJSF da VTEX só hidrata o `default` de array quando os itens são
+      // objetos — com `items: string` o default é ignorado ao criar a section.
+      "default": [
+        { "label": "Formato" },
+        { "label": "Material" },
+        { "label": "Acabamento" },
+        { "label": "Superfície lisa" },
+        { "label": "Modelo" },
+        { "label": "Suporta até kg" },
+        { "label": "Proteção contra fungos e bactérias" },
+        { "label": "Cor kit fixação" },
+        { "label": "Material kit fixação" },
+        { "label": "Itens inclusos" },
+        { "label": "Tipo material" },
+        { "label": "Linha" },
+        { "label": "Comprimento" },
+        { "label": "Largura" },
+      ],
+      "items": {
+        "type": "object",
+        "required": ["label"],
+        "properties": {
+          "label": {
+            "type": "string",
+            "title": "Label da faceta",
+          },
+        },
+      },
+    },
+  },
+}

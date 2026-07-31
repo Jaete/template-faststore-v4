@@ -1,0 +1,4 @@
+npx lint-staged
+
+# Marcador para o post-commit detectar bypass via --no-verify
+touch "$(git rev-parse --git-dir)/.pre-commit-ok"

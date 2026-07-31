@@ -1,0 +1,32 @@
+@use '../../../styles/globals' as *;
+
+.productInfo {
+  display: flex;
+  align-items: flex-start;
+  gap: fluid(48px);
+  @include default-page-width(fluid(48px));
+
+  @include mobile {
+    flex-direction: column;
+    padding: 24px 16px;
+    gap: 24px;
+  }
+
+  &__gallery {
+    flex: none;
+
+    @include mobile {
+      width: 100%;
+    }
+  }
+
+  &__details {
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: fluid(647px);
+
+    @include mobile {
+      min-height: 0;
+    }
+  }
+}

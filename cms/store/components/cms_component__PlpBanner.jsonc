@@ -1,0 +1,83 @@
+{
+  "$extends": ["#/$defs/base-component"],
+  "$componentKey": "PlpBanner",
+  "$componentTitle": "Banner de PLP",
+  "type": "object",
+  "required": ["variant"],
+  "properties": {
+    // Discriminador SEMPRE visível: escolhe entre banner com imagem ou só título.
+    "variant": {
+      "title": "Variante",
+      "description": "Com imagem: imagem de fundo com o título sobreposto. Apenas título: só o título centralizado, sem imagem.",
+      "type": "string",
+      "enum": ["image", "titleOnly"],
+      "enumNames": ["Com imagem", "Apenas título"],
+      "default": "image",
+    },
+    "useCategoryName": {
+      "title": "Usar nome da categoria como título",
+      "description": "Quando marcado, o título é o nome da categoria atual da PLP (exibido capitalizado) e o campo Título é ignorado. Sem categoria (fora de uma PLP), usa o Título.",
+      "type": "boolean",
+      "default": false,
+    },
+    "title": {
+      "title": "Título",
+      "description": "Ignorado quando 'Usar nome da categoria como título' está marcado.",
+      "type": "string",
+    },
+  },
+  // As imagens só aparecem na variante "Com imagem" — mesmo padrão
+  // dependencies + oneOf usado nos demais componentes.
+  "dependencies": {
+    "variant": {
+      "oneOf": [
+        {
+          "properties": {
+            "variant": { "enum": ["image"] },
+            "image": {
+              "type": "object",
+              "title": "Imagem de fundo (desktop)",
+              "description": "Exibida no desktop. Se nenhuma imagem mobile for informada, também vale para o mobile.",
+              "properties": {
+                "src": {
+                  "type": "string",
+                  "title": "Imagem",
+                  "widget": {
+                    "ui:widget": "media-gallery",
+                  },
+                },
+                "alt": {
+                  "type": "string",
+                  "title": "Texto alternativo",
+                },
+              },
+            },
+            "mobileImage": {
+              "type": "object",
+              "title": "Imagem de fundo (mobile)",
+              "description": "Imagem específica para mobile. Quando preenchida, é exibida apenas no mobile, substituindo a imagem de desktop.",
+              "properties": {
+                "src": {
+                  "type": "string",
+                  "title": "Imagem",
+                  "widget": {
+                    "ui:widget": "media-gallery",
+                  },
+                },
+                "alt": {
+                  "type": "string",
+                  "title": "Texto alternativo",
+                },
+              },
+            },
+          },
+        },
+        {
+          "properties": {
+            "variant": { "enum": ["titleOnly"] },
+          },
+        },
+      ],
+    },
+  },
+}

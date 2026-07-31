@@ -1,0 +1,72 @@
+@use '../../../../styles/globals' as *;
+
+.nav {
+  display: flex;
+  flex: 1;
+  align-self: stretch;
+  justify-content: center;
+  min-width: 0;
+
+  @include below-desktop {
+    display: none;
+  }
+}
+
+.navList {
+  display: flex;
+  flex-direction: row;
+  gap: fluid(32px);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+  }
+}
+
+.navLink {
+  @include font(
+    0.875rem,
+    $font-weight-regular,
+    var(--header-content-color),
+    150%,
+    0,
+    center
+  );
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 200ms ease;
+
+  &:hover,
+  &:focus-visible,
+  &--active {
+    color: $color-primary;
+  }
+}
+
+.megaMenu {
+  @include slide-in(top, 200ms, 8px);
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  min-height: fluid(320px);
+  background: $color-white;
+  border-top: 1px solid $color-surface-lighter;
+  box-shadow: 0 8px 16px rgba(3, 29, 47, 0.12);
+
+  @include below-desktop {
+    display: none;
+  }
+
+  &--closing {
+    @include slide-out(top, 90ms, 8px);
+  }
+}

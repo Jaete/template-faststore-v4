@@ -1,0 +1,66 @@
+@use '../../../styles/globals' as *;
+
+.seoText {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 56px 24px;
+  gap: 53px;
+
+  @media (min-width: 769px) {
+    padding: 56px 48px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1291px;
+  }
+
+  &__title {
+    align-self: stretch;
+    @include font(1.75rem, $font-weight-medium, $color-primary-darkest, 120%);
+  }
+
+  &__description {
+    align-self: stretch;
+    @include paragraph-p2($color-surface-dark, $font-weight-medium);
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    :where(p, ul, ol, blockquote, h1, h2, h3, h4, h5, h6) {
+      margin: 0;
+    }
+
+    :where(p, li) {
+      @include paragraph-p2($color-surface-dark, $font-weight-light);
+    }
+
+    :where(ul, ol) {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-inline-start: 1.5em;
+    }
+
+    :where(a) {
+      color: $color-primary;
+      text-decoration: underline;
+    }
+
+    :where(strong, b) {
+      font-weight: $font-weight-semibold;
+    }
+  }
+
+  &__link {
+    @include link1-size-bold($color-primary, $text-align: center);
+  }
+}

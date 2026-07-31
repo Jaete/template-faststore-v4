@@ -1,0 +1,88 @@
+@use '../../../../styles/globals' as *;
+
+.priceRangeFacet {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+}
+
+.priceRangeFacet__bounds {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  @include paragraph-p3($color-surface-dark);
+}
+
+.priceRangeFacet__selected {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  gap: 29px;
+}
+
+.priceRangeFacet__field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+
+  &--end {
+    align-items: flex-end;
+  }
+}
+
+.priceRangeFacet__label {
+  @include paragraph-p3($color-primary-darkest, $font-weight-medium);
+}
+
+.priceRangeFacet__valueBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 100px;
+  height: 40px;
+  padding: 0 8px;
+  background: $color-surface-lightest;
+  border: 1px solid transparent;
+  border-radius: 2px;
+
+  &:focus-within {
+    border-color: $color-brand-blue;
+  }
+}
+
+.priceRangeFacet__currency {
+  @include paragraph-p3($color-text-light);
+
+  flex: none;
+}
+
+.priceRangeFacet__value {
+  @include paragraph-p3($color-text-light);
+
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  text-align: left;
+  background: none;
+  border: none;
+  appearance: textfield;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+}

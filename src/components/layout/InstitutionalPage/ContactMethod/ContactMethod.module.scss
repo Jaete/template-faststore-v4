@@ -1,0 +1,23 @@
+@use '../../../../styles/globals' as *;
+
+.contactMethod {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+
+  &__icon {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  &__iconSvg {
+    width: 16px;
+    height: 16px;
+    color: $color-brand-blue;
+  }
+
+  &__label {
+    @include paragraph-p2($color-text-medium, $font-weight-light);
+  }
+}

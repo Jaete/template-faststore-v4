@@ -1,0 +1,110 @@
+{
+  "$extends": ["#/$defs/base-component"],
+  "$componentKey": "CategoryQuickNavigation",
+  "$componentTitle": "Navegação Rápida de Categorias",
+  "type": "object",
+  "required": [],
+  "properties": {
+    "title": {
+      "title": "Título",
+      "type": "string",
+    },
+    "showArrows": {
+      "title": "Exibir setas laterais",
+      "description": "Controla a exibição das setas laterais do carrossel em cada dispositivo.",
+      "type": "object",
+      "properties": {
+        "desktop": {
+          "title": "Desktop",
+          "description": "Exibe as setas laterais no desktop/tablet.",
+          "type": "boolean",
+          "default": true,
+        },
+        "mobile": {
+          "title": "Mobile",
+          "description": "Exibe as setas laterais no mobile.",
+          "type": "boolean",
+          "default": true,
+        },
+      },
+    },
+    "items": {
+      "title": "Itens",
+      "description": "Cada item filtra a categoria (se a página atual for um departamento) ou a subcategoria (se a página atual for uma categoria) informada no slug — ou direciona para um link manual, dependendo do tipo escolhido",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "title": "Item",
+        "required": ["title", "link"],
+        "properties": {
+          "title": {
+            "title": "Nome exibido",
+            "type": "string",
+          },
+          "image": {
+            "type": "object",
+            "title": "Imagem",
+            "properties": {
+              "src": {
+                "type": "string",
+                "title": "Imagem",
+                "widget": {
+                  "ui:widget": "media-gallery",
+                },
+              },
+              "alt": {
+                "type": "string",
+                "title": "Texto alternativo",
+              },
+            },
+          },
+          "link": {
+            "title": "Destino",
+            "type": "object",
+            "required": ["type"],
+            "properties": {
+              "type": {
+                "title": "Tipo de destino",
+                "description": "Categoria/subcategoria: filtra a partir da página atual. Link direto: aponta para qualquer página do site (ex.: um simulador).",
+                "type": "string",
+                "enum": ["category", "link"],
+                "enumNames": ["Categoria/Subcategoria", "Link direto"],
+                "default": "category",
+              },
+            },
+            "dependencies": {
+              "type": {
+                "oneOf": [
+                  {
+                    "properties": {
+                      "type": {
+                        "enum": ["category"],
+                      },
+                      "categorySlug": {
+                        "title": "Slug da categoria/subcategoria",
+                        "description": "Slug (path) da categoria ou subcategoria de destino, ex.: assentos-para-acessibilidade. É concatenado ao caminho da página atual.",
+                        "type": "string",
+                      },
+                    },
+                  },
+                  {
+                    "properties": {
+                      "type": {
+                        "enum": ["link"],
+                      },
+                      "href": {
+                        "title": "Link (URL)",
+                        "description": "Link direto para qualquer página do site.",
+                        "type": "string",
+                      },
+                    },
+                  },
+                ],
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+}

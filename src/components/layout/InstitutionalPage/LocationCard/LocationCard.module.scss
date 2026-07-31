@@ -1,0 +1,85 @@
+@use '../../../../styles/globals' as *;
+
+.locationCard {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  width: 100%;
+  padding: 16px;
+  background: $color-white;
+  border: 1px solid $color-surface-lighter;
+  border-radius: 8px;
+
+  &__image {
+    width: 100%;
+    height: 194px;
+    background-color: $color-surface-lighter;
+    background-position: center;
+    background-size: cover;
+    border-radius: 4px;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__name {
+    @include subtitle-size-2($color-primary-darkest);
+  }
+
+  &__rows {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    @include paragraph-p3($color-text-medium, $font-weight-light);
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    color: $color-brand-blue;
+  }
+
+  &__directions {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 16px 40px;
+    background: $color-white;
+    border: 1px solid $color-surface-light;
+    border-radius: 4px;
+    text-decoration: none;
+    @include paragraph-p2($color-primary-darkest, $font-weight-regular, center);
+  }
+
+  &__directionsIcon {
+    flex-shrink: 0;
+    width: 12px;
+    height: 16px;
+  }
+
+  &__directionsIconDefault {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    color: $color-brand-blue;
+  }
+}

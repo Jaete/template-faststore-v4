@@ -1,0 +1,61 @@
+{
+  "name": "starter.store",
+  "version": "0.1.0",
+  "description": "FastStore Base Starter",
+  "private": true,
+  "scripts": {
+    "dev": "faststore dev",
+    "build": "faststore build",
+    "postbuild": "rimraf public/brandless-negative.png public/brandless-neutral.png public/brandless-positive.png public/mockServiceWorker.js",
+    "start": "faststore start",
+    "cms-sync": "yarn generate && yarn upload",
+    "generate": "vtex content generate-schema cms/store/components cms/store/pages --out cms_schema.json",
+    "upload": "vtex content upload-schema cms_schema.json --storeId mystore --yes",
+    "test": "faststore test",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,mjs}": [
+      "eslint --fix --max-warnings 0",
+      "prettier --write"
+    ],
+    "*.{scss,css,json,md}": [
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "@faststore/cli": "4.4.0",
+    "clsx": "^2.1.1",
+    "graphql": "^16.11.0",
+    "nodemailer": "^6.9.16",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@cypress/code-coverage": "^3.12.1",
+    "@eslint/js": "^9",
+    "@lhci/cli": "^0.9.0",
+    "@testing-library/cypress": "^10.0.1",
+    "@types/nodemailer": "^6.4.16",
+    "@types/react-dom": "^18",
+    "cypress": "12.17.4",
+    "cypress-axe": "^1.5.0",
+    "cypress-wait-until": "^2.0.1",
+    "eslint": "^9",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^14.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.8",
+    "prettier": "^3.9.4",
+    "rimraf": "^3.0.2",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.62.1"
+  },
+  "author": "VTEX"
+}

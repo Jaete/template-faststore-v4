@@ -1,0 +1,18 @@
+type CouponResult {
+  """Cupom vigente após a operação (null se removido ou inválido)."""
+  coupon: String
+  """Soma dos descontos aplicados ao carrinho, em reais."""
+  discount: Float!
+  """Total do carrinho após o desconto (sem frete), em reais."""
+  total: Float!
+}
+
+extend type Mutation {
+  """
+  Aplica/remove um cupom de desconto (string vazia remove o cupom) via o
+  endpoint de cupons da Checkout API — que recalcula os preços dos itens,
+  ao contrário do `marketingData`. Retorna o cupom vigente e os totais
+  recalculados.
+  """
+  applyCoupon(orderFormId: String!, coupon: String!): CouponResult!
+}

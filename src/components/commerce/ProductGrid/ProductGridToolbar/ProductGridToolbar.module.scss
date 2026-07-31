@@ -1,0 +1,81 @@
+@use '../../../../styles/globals' as *;
+
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+
+  &__count {
+    @include paragraph-p2($color-text-medium);
+    flex: none;
+  }
+
+  &__sort {
+    flex: none;
+    --dropdown-width: 293px;
+    --dropdown-trigger-height: 40px;
+    --dropdown-label-max-width: none;
+  }
+
+  @include below-desktop {
+    display: none;
+  }
+}
+
+.toolbarMobile {
+  display: none;
+
+  @include below-desktop {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+    width: 100%;
+    margin-bottom: 80px;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 21px;
+    width: 100%;
+  }
+
+  &__button {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+    height: 40px;
+    padding: 12px 16px;
+    border: 1px solid $color-surface-lighter;
+    border-radius: 2px;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  &__icon {
+    flex: none;
+    width: 16px;
+    height: 16px;
+    color: $color-brand-blue;
+  }
+
+  &__label {
+    @include paragraph-p3($color-neutral-400);
+    white-space: nowrap;
+  }
+
+  &__count {
+    @include paragraph-p2($color-text-medium, $text-align: center);
+    width: 100%;
+  }
+}

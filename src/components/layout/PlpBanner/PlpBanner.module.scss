@@ -1,0 +1,63 @@
+@use '../../../styles/globals' as *;
+
+.plpBanner {
+  position: relative;
+  width: 100%;
+  height: fluid(259px);
+  overflow: hidden;
+
+  @include mobile {
+    height: 180px;
+  }
+
+  &__media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__media--desktop {
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__media--mobile {
+    display: none;
+
+    @include mobile {
+      display: block;
+    }
+  }
+
+  &--titleOnly {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__centeredTitle {
+    @include h2-size-m($color-primary-darkest, center);
+  }
+
+  &__title--capitalize {
+    text-transform: capitalize;
+  }
+
+  &__title {
+    position: absolute;
+    left: fluid(48px);
+    bottom: fluid(63px);
+    max-width: fluid(700px);
+    @include font(2.5rem, $font-weight-medium, $color-white, 120%);
+
+    @include mobile {
+      left: 20px;
+      bottom: 24px;
+      max-width: 120px;
+      font-size: 1.75rem;
+    }
+  }
+}

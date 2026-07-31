@@ -1,0 +1,40 @@
+@use '../../../styles/globals' as *;
+
+.paginationDots {
+  --pagination-dots-size: 7px;
+  --pagination-dots-active-width: 16px;
+  --pagination-dots-gap: 5px;
+  --pagination-dots-color: #{$color-primary-darkest};
+  --pagination-dots-opacity: 0.2;
+  --pagination-dots-active-color: #{$color-primary-light};
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--pagination-dots-gap);
+
+  &__dot {
+    width: var(--pagination-dots-size);
+    height: var(--pagination-dots-size);
+    padding: 0;
+    border: 0;
+    border-radius: 10px;
+    background: var(--pagination-dots-color);
+    opacity: var(--pagination-dots-opacity);
+    cursor: pointer;
+    transition:
+      width 0.2s ease,
+      background-color 0.2s ease,
+      opacity 0.2s ease;
+
+    &:disabled {
+      cursor: default;
+    }
+
+    &--active {
+      width: var(--pagination-dots-active-width);
+      background: var(--pagination-dots-active-color);
+      opacity: 1;
+    }
+  }
+}

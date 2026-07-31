@@ -1,0 +1,16 @@
+{
+  "$extends": ["#/$defs/base-component"],
+  "$componentKey": "ProductInfo",
+  "$componentTitle": "Informações do Produto",
+  "type": "object",
+  "properties": {
+    // A section lê a maior parte dos dados do contexto da PDP (imagens, título,
+    // preço, parcelamento, variações e anexos do SKU). O campo abaixo é uma
+    // configuração que não vem do catálogo.
+    "pixDiscountPercent": {
+      "type": "number",
+      "title": "Desconto no PIX (%)",
+      "description": "Percentual de desconto no PIX. Apenas visual — deve espelhar a promoção de PIX configurada na VTEX (aplicada só no checkout). O preço é calculado sobre o preço à vista. Sem valor (ou 0), a tag de PIX não aparece.",
+    },
+  },
+}

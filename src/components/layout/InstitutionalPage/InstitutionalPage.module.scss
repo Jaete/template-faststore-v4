@@ -1,0 +1,251 @@
+@use '../../../styles/globals' as *;
+
+.institutionalPage {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 40px 20px;
+
+  &--noBanner {
+    @media (min-width: 769px) {
+      padding-top: calc(40px + #{fluid(88px)});
+    }
+  }
+
+  &__banner {
+    display: block;
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+
+    @media (max-width: 768px) {
+      height: 160px;
+    }
+  }
+
+  &__layout {
+    display: flex;
+    gap: 64px;
+    margin-top: 24px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 24px;
+    }
+  }
+
+  &__navDesktop {
+    display: none;
+    flex-direction: column;
+    gap: 24px;
+    flex: 0 0 275px;
+
+    @media (min-width: 769px) {
+      display: flex;
+    }
+  }
+
+  &__navMobile {
+    @media (min-width: 769px) {
+      display: none;
+    }
+  }
+
+  &__group {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 275px;
+    padding: 24px 24px 28px;
+    gap: 16px;
+    background: $color-surface-lighter;
+    border: 1px solid rgba(0, 15, 30, 0.05);
+    border-radius: 4px;
+  }
+
+  &__groupTitle {
+    width: 100%;
+    @include subtitle-size-1($color-text-medium);
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 16px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__link {
+    display: block;
+    width: 100%;
+    border: none;
+    padding: 0;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    @include paragraph-p2($color-text-medium, $font-weight-light);
+
+    &--active {
+      color: $color-brand-blue;
+      font-weight: $font-weight-medium;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title {
+    font-family: $font-family-base;
+    font-weight: $font-weight-medium;
+    font-size: 1.5rem;
+    line-height: 140%;
+    color: $color-primary-darkest;
+    margin-bottom: 24px;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    @include paragraph-p2($color-text-medium, $font-weight-light, justify);
+
+    p {
+      margin: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      @include subtitle-size-1($color-text-medium);
+    }
+
+    ul,
+    ol {
+      padding-inline-start: 20px;
+    }
+  }
+
+  &__video {
+    margin-top: 32px;
+  }
+
+  &__files {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    margin-top: 32px;
+  }
+
+  &__filesTitle {
+    @include subtitle-size-1($color-text-medium);
+  }
+
+  &__filesDescription {
+    align-self: stretch;
+    @include paragraph-p2($color-text-medium, $font-weight-light, justify);
+  }
+
+  &__contactMethods {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  &__contactMethodsTitle {
+    @include paragraph-p2($color-text-medium, $font-weight-regular);
+  }
+
+  &__contactMethodsList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__locations {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px 16px;
+    margin-top: 32px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+
+  &__highlight {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    margin-top: 32px;
+    padding: 32px;
+    background: $color-surface-lighter;
+    border: 1px solid $color-surface-light;
+    border-radius: 8px;
+    box-shadow:
+      0px 2px 4px rgba(0, 2, 4, 0.02),
+      0px 8px 12px rgba(0, 15, 30, 0.04);
+
+    &--plain {
+      gap: 16px;
+      padding: 24px 0;
+      background: none;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      border-top: 1px solid $color-surface-lighter;
+      border-bottom: 1px solid $color-surface-lighter;
+    }
+  }
+
+  &__highlightTitle {
+    @include subtitle-size-1($color-primary-darkest);
+  }
+
+  &__highlightText {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    @include paragraph-p2($color-text-medium, $font-weight-light);
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &__highlightButton {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: flex-start;
+    padding: 10px 20px;
+    border-radius: 4px;
+    background: $color-primary;
+    text-decoration: none;
+    @include font(
+      0.875rem,
+      $font-weight-medium,
+      $color-white,
+      140%,
+      $text-align: center
+    );
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,119 @@
+@use '../../../styles/globals' as *;
+
+.modelQuickFilter {
+  --model-quick-filter-arrows-gutter: 40px;
+  --model-quick-filter-side-gutter: max(
+    var(--model-quick-filter-arrows-gutter),
+    #{fluid(102px)}
+  );
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  max-width: min(1236px, 100dvw - 2 * var(--model-quick-filter-side-gutter));
+  margin: 80px auto;
+  padding: 32px 0 65px;
+  border-bottom: 1px solid $color-surface-lighter;
+
+  @include below-desktop {
+    gap: 16px;
+    padding: 24px 0;
+    width: 100%;
+    max-width: calc(100dvw - (2 * 48px));
+    margin: 20px auto 38px;
+  }
+
+  @include mobile {
+    width: 100%;
+    max-width: calc(100dvw - 32px);
+  }
+
+  &__title {
+    @include h3-size-d($color-primary-darkest, $text-align: center);
+    width: 100%;
+
+    @include below-desktop {
+      @include h4-size-d($color-primary-darkest, $text-align: center);
+    }
+  }
+
+  &__carousel {
+    position: relative;
+    width: 100%;
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__dropdown {
+    display: none;
+
+    @include mobile {
+      display: block;
+      width: 100%;
+
+      --dropdown-trigger-height: 40px;
+    }
+  }
+
+  &__track {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__chip {
+    @include paragraph-p2(
+      $color-white,
+      $weight: $font-weight-light,
+      $text-align: center
+    );
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    padding: 8px 16px;
+    border: 0;
+    border-radius: 8px;
+    background: $color-primary-light;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background: $color-primary;
+    }
+
+    &--selected {
+      background: $color-primary-darkest;
+    }
+  }
+
+  &__arrows {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    --carousel-arrows-size: 32px;
+    --carousel-arrows-offset: calc(
+      -1 * var(--model-quick-filter-arrows-gutter)
+    );
+    --carousel-arrows-icon-size: 10px;
+    --carousel-arrows-icon-color: #{$color-surface-dark};
+    --carousel-arrows-icon-color-disabled: #{$color-surface-mid};
+
+    @include mobile {
+      display: none;
+    }
+  }
+}

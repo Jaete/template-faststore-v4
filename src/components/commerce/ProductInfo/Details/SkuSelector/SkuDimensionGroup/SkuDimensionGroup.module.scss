@@ -1,0 +1,30 @@
+@use '../../../../../../styles/globals' as *;
+
+.skuDimensionGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 12px;
+  width: 100%;
+
+  &__label {
+    @include paragraph-p3($color-text-darkest, $weight: $font-weight-light);
+    line-height: 120%;
+    width: 100%;
+  }
+
+  &__value {
+    font-weight: $font-weight-regular;
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    flex-wrap: wrap;
+    padding: 0;
+    gap: 8px;
+    width: 100%;
+  }
+}

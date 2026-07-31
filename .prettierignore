@@ -1,0 +1,14 @@
+.faststore
+.next
+node_modules
+public
+cms_schema.json
+yarn.lock
+
+# Configs sensíveis da FastStore/VTEX — não formatar
+discovery.config.js
+vtex.env
+cypress.config.ts
+cms/
+.github/
+.husky/

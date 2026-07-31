@@ -1,0 +1,40 @@
+@use '../../../../styles/globals' as *;
+
+.loadMore {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 250px;
+  max-width: 100%;
+}
+
+.status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.track {
+  width: 100%;
+  height: 8px;
+  background: $color-surface-light;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  background: $color-brand-blue;
+  border-radius: 7px;
+  transition: width 0.3s ease;
+}
+
+.count {
+  @include paragraph-p2($color-primary-darkest, $font-weight-light, center);
+
+  width: 100%;
+  line-height: 150%;
+}

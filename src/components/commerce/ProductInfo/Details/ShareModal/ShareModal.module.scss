@@ -1,0 +1,44 @@
+@use '../../../../../styles/globals' as *;
+
+.shareModal {
+  &__options {
+    display: flex;
+    gap: 12px;
+  }
+
+  &__option {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 8px;
+    border: 1px solid $color-border-soft;
+    border-radius: 8px;
+    background: $color-white;
+    cursor: pointer;
+    transition:
+      border-color 0.15s ease,
+      background-color 0.15s ease;
+
+    &:hover {
+      border-color: $color-primary-light;
+      background: $color-surface-lightest;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-primary-light;
+      outline-offset: 2px;
+    }
+  }
+
+  &__optionIcon {
+    width: 28px;
+    height: 28px;
+    color: $color-primary;
+  }
+
+  &__optionLabel {
+    @include paragraph-p3($color-text-medium, $text-align: center);
+  }
+}

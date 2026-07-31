@@ -1,0 +1,124 @@
+@use '../../../../../styles/globals' as *;
+
+.galleryZoomModal {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $color-surface-light;
+  animation: fs-gallery-zoom-fade-in 200ms ease-out;
+
+  &--closing {
+    animation: fs-gallery-zoom-fade-out 200ms ease-in forwards;
+  }
+
+  @include mobile {
+    background: $color-white;
+  }
+
+  &__container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__carousel {
+    --carousel-gap: 0px;
+    --carousel-item-width: 100%;
+    --carousel-item-height: 100%;
+    position: absolute;
+    width: 967px;
+    height: 967px;
+    max-width: calc(100vw - #{fluid(32px)});
+    max-height: calc(100vh - #{fluid(190px)});
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    @include mobile {
+      width: 691px;
+      height: 691px;
+      max-width: calc(100vw - 32px);
+      max-height: calc(100vh - 190px);
+    }
+  }
+
+  &__media {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  &__controls {
+    position: absolute;
+    left: 67%;
+    bottom: 100px;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: min(195px, calc(100vw - #{fluid(32px)}));
+    gap: fluid(16px);
+
+    @include mobile {
+      left: 50%;
+      bottom: 72px;
+      width: 195px;
+    }
+  }
+
+  &__close,
+  &__arrow {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: $color-surface-lighter;
+    color: $color-text-strongest;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background: $color-neutral-200;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+@keyframes fs-gallery-zoom-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fs-gallery-zoom-fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}

@@ -1,0 +1,55 @@
+@use '../../../styles/globals' as *;
+
+.categoryQuickNavigation {
+  --category-quick-nav-arrows-gutter: 48px;
+
+  @include mobile {
+    --category-quick-nav-arrows-gutter: 16px;
+  }
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  max-width: fit-content;
+  margin: 0 auto;
+  padding: 32px 0;
+
+  @include mobile {
+    gap: 24px;
+    padding: 32px 0;
+  }
+
+  &__title {
+    @include h3-size-d($color-primary-darkest, $text-align: center);
+  }
+
+  &__carousel {
+    position: relative;
+    width: 100%;
+    --carousel-gap: 59px;
+
+    > :first-child {
+      padding-inline: var(--category-quick-nav-arrows-gutter);
+      scroll-padding-inline: var(--category-quick-nav-arrows-gutter);
+    }
+  }
+
+  &__item {
+    width: fluid(152px);
+
+    @include mobile {
+      width: 128px;
+    }
+  }
+
+  &__arrows {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 160px;
+    --carousel-arrows-offset: 8px;
+  }
+}

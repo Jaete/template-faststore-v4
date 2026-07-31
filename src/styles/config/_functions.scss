@@ -1,0 +1,13 @@
+@use 'sass:math';
+@use 'breakpoints' as bp;
+
+$design-width: math.div(bp.$breakpoint-max-desktop, 1px);
+$design-width-min: math.div(bp.$breakpoint-mobile, 1px);
+
+@function fluid($px) {
+  $value: math.div($px, 1px);
+  $min: math.div($value * $design-width-min, $design-width) * 1px;
+  $preferred: math.div($value * 100, $design-width);
+
+  @return clamp(#{$min}, #{$preferred}vw, #{$px});
+}

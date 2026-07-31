@@ -1,0 +1,53 @@
+{
+  "$extends": ["#/$defs/base-component"],
+  "$componentKey": "PopularCategories",
+  "$componentTitle": "Categorias mais buscadas",
+  "type": "object",
+  "required": ["categories"],
+  "properties": {
+    "title": {
+      "title": "Título da seção",
+      "type": "string",
+      "default": "Produtos mais buscados",
+      "widget": {
+        "ui:widget": "draftjs-rich-text"
+      }
+    },
+    "categories": {
+      "title": "Categorias",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["label", "image"],
+        "properties": {
+          "label": {
+            "title": "Nome da categoria",
+            "type": "string"
+          },
+          "image": {
+            "title": "Imagem",
+            "type": "object",
+            "required": ["src"],
+            "properties": {
+              "src": {
+                "title": "Imagem",
+                "type": "string",
+                "widget": {
+                  "ui:widget": "media-gallery"
+                }
+              },
+              "alt": {
+                "title": "Texto alternativo",
+                "type": "string"
+              }
+            }
+          },
+          "href": {
+            "title": "Link",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

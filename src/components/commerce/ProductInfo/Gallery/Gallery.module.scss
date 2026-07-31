@@ -1,0 +1,51 @@
+@use '../../../../styles/globals' as *;
+
+.gallery {
+  display: flex;
+  align-items: flex-start;
+  gap: fluid(18px);
+  width: fluid(776px);
+  height: fluid(647px);
+
+  &__rail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: fluid(8px);
+    width: fluid(97px);
+    height: fluid(458px);
+    flex: none;
+  }
+
+  &__dots {
+    display: none;
+  }
+
+  @include mobile {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    height: auto;
+
+    &__rail {
+      display: none;
+    }
+
+    &__dots {
+      --pagination-dots-size: 24px;
+      --pagination-dots-active-width: 24px;
+      --pagination-dots-gap: 4px;
+      --pagination-dots-color: #{$color-surface-mid};
+      --pagination-dots-active-color: #{$color-surface-mid};
+      --pagination-dots-opacity: 0.3;
+
+      display: flex;
+
+      button {
+        height: 2px;
+        border-radius: 2px;
+      }
+    }
+  }
+}

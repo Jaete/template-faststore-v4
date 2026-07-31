@@ -1,0 +1,50 @@
+@use '../../../styles/globals' as *;
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+
+  &--drawer {
+    --checkbox-checked-bg: #{$color-primary-blue};
+    --checkbox-checked-border: #{$color-primary-blue};
+    --checkbox-border: #{$color-surface-mid};
+    --checkbox-label-weight: #{$font-weight-light};
+    --checkbox-count-color: #{$color-text-medium};
+  }
+}
+
+.filters__title {
+  @include subtitle-size-1($color-primary-darkest);
+
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+
+.filters__list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.filters__rangeFacet {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+  padding: 20px 0;
+  border-bottom: 1px solid $color-surface-lighter;
+}
+
+.filters__rangeFacetTitle {
+  @include subtitle-size-2($color-primary-darkest);
+
+  width: 100%;
+  text-align: left;
+  text-transform: capitalize;
+}

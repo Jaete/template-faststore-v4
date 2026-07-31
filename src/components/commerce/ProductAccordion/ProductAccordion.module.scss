@@ -1,0 +1,16 @@
+@use '../../../styles/globals' as *;
+
+.productAccordion {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding: 32px 48px 48px;
+  gap: 24px;
+  max-width: $breakpoint-max-desktop;
+  margin: 0 auto;
+
+  @include mobile {
+    padding: 32px 13px;
+  }
+}

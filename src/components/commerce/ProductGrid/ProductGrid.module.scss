@@ -1,0 +1,70 @@
+@use '../../../styles/globals' as *;
+
+.mainContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 41px;
+  width: 100%;
+  @include default-page-width(48px 48px);
+
+  @include mobile {
+    gap: 0;
+    padding: 0 16px;
+  }
+}
+
+.filtersPlaceholder {
+  flex: none;
+  width: 295px;
+
+  align-self: stretch;
+
+  @include tablet {
+    display: none;
+  }
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  width: 100%;
+
+  @media (min-width: #{$design-width * 1px}) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @include mobile {
+    gap: 16px;
+  }
+
+  > * {
+    min-width: 0;
+    max-width: none;
+    width: 100%;
+  }
+
+  &__empty {
+    @include paragraph-p1($color-text-muted);
+
+    width: 100%;
+    text-align: center;
+    padding: 48px 0;
+  }
+}

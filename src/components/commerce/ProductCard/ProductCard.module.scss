@@ -1,0 +1,201 @@
+@use '../../../styles/globals' as *;
+
+@mixin product-card-small-size {
+  min-width: 171px;
+  max-width: 171px;
+
+  .productCard__imageContainer {
+    aspect-ratio: 171 / 200;
+  }
+
+  .productCard__name {
+    @include paragraph-p3($color-text-darkest);
+    min-height: 34px;
+  }
+
+  .productCard__sellingPrice {
+    @include paragraph-p2($color-primary, $font-weight-medium);
+    text-transform: uppercase;
+  }
+}
+
+.productCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+  min-width: 324px;
+  max-width: 324px;
+  text-decoration: none;
+
+  &--small {
+    @include product-card-small-size;
+  }
+
+  @include mobile {
+    &:not(.productCard--small) {
+      width: calc((100dvw - 32px) * 0.9);
+      min-width: 0;
+      max-width: none;
+    }
+  }
+
+  &--skeleton {
+    @include skeleton-pulse;
+  }
+
+  &--animateIn {
+    animation: productCardIn 420ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    animation-delay: calc(var(--card-index, 0) * 55ms);
+  }
+
+  &__link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  &__imageContainer {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 324 / 338;
+    background: #ececec52;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__discountTag {
+    position: absolute;
+    left: 1px;
+    bottom: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 8px;
+    background: $color-accent;
+    @include font(0.6875rem, $font-weight-semibold, $color-white, 150%);
+    border-radius: 0;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+  }
+
+  &__name {
+    @include font(0.875rem, $font-weight-regular, $color-text-darkest, 132%);
+    @include line-clamp(2);
+    @include text-ellipsis;
+    min-height: 38px;
+    margin: 0;
+  }
+
+  &__priceRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 13px;
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__listPrice {
+    @include strikethrough2-size-regular($color-surface-dark);
+    text-transform: uppercase;
+  }
+
+  &__sellingPrice {
+    @include font(1rem, $font-weight-semibold, $color-primary, 120%);
+    text-transform: uppercase;
+  }
+
+  &__colors {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  &__colorOption {
+    display: block;
+    width: 12px;
+    height: 12px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: $color-surface-mid;
+    background-size: cover;
+    background-position: center;
+    box-sizing: border-box;
+    cursor: pointer;
+    appearance: none;
+
+    &--selected {
+      width: 16px;
+      height: 16px;
+      padding: 2px;
+      border: 1px solid $color-text-darkest;
+      background-clip: content-box;
+    }
+
+    &--white {
+      @include border(0.7px, $color-neutral-200);
+    }
+  }
+
+  &__colorsMore {
+    @include font(0.625rem, $font-weight-light, $color-text-darkest, 120%);
+    text-transform: uppercase;
+  }
+
+  &__skeletonLine {
+    display: block;
+    height: 12px;
+    border-radius: 4px;
+    background: $color-surface-light;
+
+    &--name {
+      width: 70%;
+    }
+
+    &--price {
+      width: 40%;
+    }
+  }
+}
+
+@keyframes productCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .productCard--animateIn {
+    animation: none;
+  }
+}

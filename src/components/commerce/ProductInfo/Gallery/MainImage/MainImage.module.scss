@@ -1,0 +1,70 @@
+@use '../../../../../styles/globals' as *;
+
+.mainImage {
+  position: relative;
+  width: fluid(661px);
+  height: fluid(647px);
+  border-radius: fluid(4px);
+  overflow: hidden;
+  @include border(1px, $color-surface-soft);
+
+  @include mobile {
+    width: 100dvw;
+    height: 406px;
+    border: none;
+    border-radius: 0;
+  }
+
+  &__carousel {
+    --carousel-gap: 0px;
+    --carousel-item-width: 100%;
+    --carousel-item-height: 100%;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__arrows {
+    display: none;
+
+    @include mobile {
+      display: flex;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      --carousel-arrows-offset: 0;
+      --carousel-arrows-icon-size: 12px;
+      z-index: 2;
+    }
+  }
+
+  &__maximize {
+    position: absolute;
+    left: fluid(22px);
+    bottom: fluid(22px);
+    width: fluid(24px);
+    height: fluid(24px);
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: rgba(23, 23, 23, 0.7);
+    cursor: pointer;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: rgba(23, 23, 23, 1);
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

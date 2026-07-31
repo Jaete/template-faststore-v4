@@ -1,0 +1,89 @@
+@use '../../../styles/globals' as *;
+
+.tabbedShelf {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  @include default-page-width(46px, 16px);
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  &__title {
+    @include font(
+      1.75rem,
+      $font-weight-regular,
+      $color-primary-darkest,
+      110%,
+      0.02em
+    );
+
+    strong {
+      font-weight: 600;
+    }
+
+    @include mobile {
+      font-size: 24px;
+    }
+  }
+
+  &__arrows {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-shrink: 0;
+    width: 116px;
+    height: 32px;
+    padding: 0 0 0 36px;
+    gap: 16px;
+
+    --carousel-arrows-size: 32px;
+    --carousel-arrows-offset: 0;
+    --carousel-arrows-icon-size: 14px;
+    --carousel-arrows-icon-color: #{$color-surface-dark};
+    --carousel-arrows-icon-color-disabled: #{$color-surface-mid};
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__pagination {
+    display: none;
+
+    @include mobile {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      max-width: 380px;
+      height: 32px;
+      margin: 0 auto;
+    }
+  }
+
+  &__paginationArrow {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+
+    --carousel-arrows-size: 32px;
+    --carousel-arrows-offset: 0;
+    --carousel-arrows-icon-size: 14px;
+    --carousel-arrows-icon-color: #{$color-surface-dark};
+    --carousel-arrows-icon-color-disabled: #{$color-surface-mid};
+  }
+
+  &__dots {
+    flex-shrink: 0;
+  }
+}

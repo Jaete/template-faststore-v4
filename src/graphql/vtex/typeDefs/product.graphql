@@ -1,0 +1,80 @@
+"""
+Uma opção de parcelamento vinda da oferta comercial (commertialOffer) do
+seller na VTEX.
+"""
+type Installments {
+  """Nome do meio de pagamento (ex.: 'Visa', 'Mastercard')."""
+  installmentPaymentSystemName: String!
+  """Valor de cada parcela, em reais."""
+  installmentValue: Float!
+  """Taxa de juros da opção (0 = sem juros)."""
+  installmentInterest: Float!
+  """Número de parcelas desta opção."""
+  installmentNumber: Float!
+}
+
+extend type StoreProduct {
+  """
+  Opções de parcelamento disponíveis para o produto, lidas da oferta
+  comercial do primeiro seller. Vazio quando não há simulação de parcelas.
+  """
+  availableInstallments: [Installments!]!
+
+  """
+  Anexos (attachments) disponíveis para este SKU, lidos do Intelligent
+  Search — ex.: voltagem, gravação personalizada. Vazio quando o SKU não tem
+  anexos cadastrados.
+  """
+  skuAttachments: [SkuAttachment!]!
+
+  """
+  Dimensões físicas (altura, largura, comprimento, peso) deste SKU, com e
+  sem embalagem. Vêm da Catalog API legada — o Intelligent Search não expõe
+  esse dado. `null` quando a chamada falha ou o SKU não tem medidas
+  cadastradas.
+  """
+  skuDimensions: SkuDimensions
+}
+
+"""Um conjunto de medidas físicas (altura/largura/comprimento/peso/peso cúbico)."""
+type SkuMeasurements {
+  height: Float
+  width: Float
+  length: Float
+  weight: Float
+  cubicWeight: Float
+}
+
+"""
+Dimensões físicas do SKU, como cadastradas na Catalog API: `withPackage` é
+o `Dimension` (medida da caixa/embalagem), `withoutPackage` é o
+`RealDimension` (medida real do produto). Um lado fica `null` quando a
+Catalog API retorna todos os campos zerados para ele (medida não
+cadastrada).
+"""
+type SkuDimensions {
+  withPackage: SkuMeasurements
+  withoutPackage: SkuMeasurements
+}
+
+"""Um valor permitido de um anexo de SKU."""
+type SkuAttachmentValue {
+  """Valor cru como cadastrado no catálogo (ex.: '220V')."""
+  value: String!
+}
+
+"""
+Um anexo (attachment) do SKU — diferente das `additionalProperty` com
+`valueReference: ATTACHMENT`, que só existem para itens de carrinho, este
+tipo descreve os valores DISPONÍVEIS para escolha na PDP.
+"""
+type SkuAttachment {
+  """Id do anexo no catálogo, usado como chave estável no seletor."""
+  attachmentID: String!
+  """Nome do anexo — é a chave enviada ao checkout no `addItem`."""
+  name: String!
+  """`true` quando o checkout exige um valor para este anexo."""
+  required: Boolean!
+  """Valores permitidos, já extraídos do `domainValues` do catálogo."""
+  values: [SkuAttachmentValue!]!
+}

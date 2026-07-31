@@ -1,0 +1,30 @@
+# Detecta commits feitos com --no-verify: a flag pula o pre-commit,
+# mas NÃO pula o post-commit. Se o marcador não existe, o pre-commit
+# não rodou — desfazemos o commit (as alterações voltam para o stage).
+
+GIT_DIR="$(git rev-parse --git-dir)"
+MARKER="$GIT_DIR/.pre-commit-ok"
+
+# Operações que legitimamente não passam pelo pre-commit
+if [ -d "$GIT_DIR/rebase-merge" ] || [ -d "$GIT_DIR/rebase-apply" ] || \
+   [ -f "$GIT_DIR/MERGE_HEAD" ] || [ -f "$GIT_DIR/CHERRY_PICK_HEAD" ] || \
+   [ -f "$GIT_DIR/REVERT_HEAD" ]; then
+  rm -f "$MARKER"
+  exit 0
+fi
+
+if [ ! -f "$MARKER" ]; then
+  echo ""
+  echo "✖ Commit bloqueado: feito com --no-verify (pre-commit não rodou)."
+  echo "  O commit foi desfeito; suas alterações continuam no stage."
+  echo "  Corrija os problemas de lint e faça o commit sem --no-verify."
+  echo ""
+  if git rev-parse -q --verify HEAD~1 >/dev/null 2>&1; then
+    git reset --soft HEAD~1
+  else
+    git update-ref -d HEAD
+  fi
+  exit 1
+fi
+
+rm -f "$MARKER"

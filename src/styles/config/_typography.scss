@@ -1,0 +1,205 @@
+$font-family-base: 'Outfit', sans-serif;
+$font-family-secondary: 'Montserrat', sans-serif;
+
+$font-weight-extra-light: 200 !default;
+$font-weight-light: 300 !default;
+$font-weight-regular: 400 !default;
+$font-weight-medium: 500 !default;
+$font-weight-semibold: 600 !default;
+$font-weight-bold: 700 !default;
+
+$letter-spacing-tight: -0.02em !default;
+$letter-spacing-base: 0 !default;
+$letter-spacing-wide: 0.05em !default;
+$letter-spacing-wider: 0.1em !default;
+
+@mixin _font-base($size, $weight, $line-height, $color, $text-align) {
+  font-family: $font-family-base;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+  color: $color;
+  text-align: $text-align;
+  margin: 0;
+}
+
+@mixin font-secondary(
+  $size,
+  $weight,
+  $color,
+  $line-height: 150%,
+  $letter-spacing: 0,
+  $text-align: left
+) {
+  @include _font-base($size, $weight, $line-height, $color, $text-align);
+  font-family: $font-family-secondary;
+  letter-spacing: $letter-spacing;
+}
+
+@mixin h1-size-d($color, $text-align: left) {
+  @include _font-base(5.375rem, $font-weight-medium, 120%, $color, $text-align);
+}
+
+@mixin h2-size-d($color, $text-align: left) {
+  @include _font-base(3.75rem, $font-weight-medium, 120%, $color, $text-align);
+}
+
+@mixin h3-size-d($color, $text-align: left) {
+  @include _font-base(1.5rem, $font-weight-medium, 120%, $color, $text-align);
+}
+
+@mixin h4-size-d($color, $text-align: left) {
+  @include _font-base(1.25rem, $font-weight-medium, 120%, $color, $text-align);
+}
+
+@mixin h5-size-d($color, $text-align: left) {
+  @include _font-base(1rem, $font-weight-medium, 120%, $color, $text-align);
+}
+
+@mixin h6-size-d($color, $text-align: left) {
+  @include _font-base(0.75rem, $font-weight-medium, 120%, $color, $text-align);
+}
+
+@mixin h1-size-m($color, $text-align: left) {
+  @include _font-base(
+    2.8125rem,
+    $font-weight-medium,
+    120%,
+    $color,
+    $text-align
+  );
+}
+
+@mixin h2-size-m($color, $text-align: left) {
+  @include _font-base(2rem, $font-weight-medium, 120%, $color, $text-align);
+}
+
+@mixin h3-size-m($color, $text-align: left) {
+  @include _font-base(
+    1.25rem,
+    $font-weight-semibold,
+    120%,
+    $color,
+    $text-align
+  );
+}
+
+@mixin h4-size-m($color, $text-align: left) {
+  @include _font-base(1rem, $font-weight-semibold, 120%, $color, $text-align);
+}
+
+@mixin h5-size-m($color, $text-align: left) {
+  @include _font-base(
+    0.75rem,
+    $font-weight-semibold,
+    120%,
+    $color,
+    $text-align
+  );
+}
+
+@mixin h6-size-m($color, $text-align: left) {
+  @include _font-base(
+    0.6875rem,
+    $font-weight-semibold,
+    120%,
+    $color,
+    $text-align
+  );
+}
+
+@mixin subtitle-size-1($color, $text-align: left) {
+  @include _font-base(1.125rem, $font-weight-medium, 150%, $color, $text-align);
+}
+
+@mixin subtitle-size-2($color, $text-align: left) {
+  @include _font-base(1rem, $font-weight-medium, 120%, $color, $text-align);
+}
+
+@mixin paragraph-p1($color, $weight: $font-weight-regular, $text-align: left) {
+  @include _font-base(1rem, $weight, 140%, $color, $text-align);
+}
+
+@mixin paragraph-p2($color, $weight: $font-weight-regular, $text-align: left) {
+  @include _font-base(0.875rem, $weight, 140%, $color, $text-align);
+}
+
+@mixin paragraph-p3($color, $weight: $font-weight-regular, $text-align: left) {
+  @include _font-base(0.75rem, $weight, 140%, $color, $text-align);
+}
+
+@mixin link1-size-regular($color, $text-align: left) {
+  @include _font-base(
+    0.875rem,
+    $font-weight-regular,
+    120%,
+    $color,
+    $text-align
+  );
+  text-decoration-line: underline;
+}
+
+@mixin link1-size-bold($color, $text-align: left) {
+  @include _font-base(
+    0.875rem,
+    $font-weight-semibold,
+    120%,
+    $color,
+    $text-align
+  );
+  text-decoration-line: underline;
+}
+
+@mixin link2-size-regular($color, $text-align: left) {
+  @include _font-base(0.75rem, $font-weight-regular, 120%, $color, $text-align);
+  text-decoration-line: underline;
+}
+
+@mixin link2-size-bold($color, $text-align: left) {
+  @include _font-base(
+    0.75rem,
+    $font-weight-semibold,
+    120%,
+    $color,
+    $text-align
+  );
+  text-decoration-line: underline;
+}
+
+@mixin strikethrough1-size-regular($color, $text-align: left) {
+  @include _font-base(0.875rem, $font-weight-light, 120%, $color, $text-align);
+  text-decoration-line: line-through;
+}
+
+@mixin strikethrough1-size-bold($color, $text-align: left) {
+  @include _font-base(
+    0.875rem,
+    $font-weight-regular,
+    120%,
+    $color,
+    $text-align
+  );
+  text-decoration-line: line-through;
+}
+
+@mixin strikethrough2-size-regular($color, $text-align: left) {
+  @include _font-base(0.75rem, $font-weight-light, 120%, $color, $text-align);
+  text-decoration-line: line-through;
+}
+
+@mixin strikethrough2-size-bold($color, $text-align: left) {
+  @include _font-base(0.75rem, $font-weight-regular, 120%, $color, $text-align);
+  text-decoration-line: line-through;
+}
+
+@mixin font(
+  $size,
+  $weight,
+  $color,
+  $line-height: 150%,
+  $letter-spacing: 0,
+  $text-align: left
+) {
+  @include _font-base($size, $weight, $line-height, $color, $text-align);
+  letter-spacing: $letter-spacing;
+}

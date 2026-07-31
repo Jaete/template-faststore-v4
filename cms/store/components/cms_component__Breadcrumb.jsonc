@@ -1,0 +1,45 @@
+{
+  "$extends": ["#/$defs/base-component"],
+  "$componentKey": "Breadcrumb",
+  "$componentTitle": "Breadcrumb",
+  "type": "object",
+  "properties": {
+    "bleed": {
+      "title": "Sobrepor a section seguinte",
+      "description": "Puxa a section seguinte (ex.: PlpBanner) para cima, ficando por cima dela — como o \"Sobrepor ao banner\" do Header",
+      "type": "boolean",
+      "default": false,
+    },
+    "invertColor": {
+      "title": "Inverter a cor",
+      "description": "Normalmente utilizado quando estiver sobrepondo um banner escuro. O breadcrumb ficará em tons de branco.",
+      "type": "boolean",
+      "default": false,
+    },
+    "homeLabel": {
+      "title": "Texto do link inicial",
+      "description": "Texto exibido no primeiro item, que leva à home",
+      "type": "string",
+      "default": "Home",
+    },
+    "items": {
+      "title": "Itens manuais",
+      "description": "Sobrepõe a árvore de categoria/produto detectada automaticamente. Deixe vazio para o breadcrumb ser montado sozinho a partir da página (categoria na PLP, árvore de categorias na PDP).",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "title": "Item",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Texto exibido",
+          },
+          "item": {
+            "type": "string",
+            "title": "Link (URL)",
+          },
+        },
+      },
+    },
+  },
+}

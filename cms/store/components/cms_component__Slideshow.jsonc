@@ -1,0 +1,105 @@
+{
+  "$extends": ["#/$defs/base-component"],
+  "$componentKey": "Slideshow",
+  "$componentTitle": "Slideshow",
+  "type": "object",
+  "required": ["banners"],
+  "properties": {
+    "banners": {
+      "title": "Banners",
+      "description": "Lista de banners exibidos no carrossel",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "title": "Banner",
+        "required": ["title", "media"],
+        "properties": {
+          "label": {
+            "type": "string",
+            "title": "Label (acima do título)",
+            "widget": {
+              "ui:widget": "draftjs-rich-text",
+            },
+          },
+          "title": {
+            "type": "string",
+            "title": "Título",
+            "widget": {
+              "ui:widget": "draftjs-rich-text",
+            },
+          },
+          "subtitle": {
+            "type": "string",
+            "title": "Subtítulo",
+            "widget": {
+              "ui:widget": "draftjs-rich-text",
+            },
+          },
+          "media": {
+            "type": "object",
+            "title": "Mídia",
+            "required": ["src", "alt"],
+            "properties": {
+              "type": {
+                "type": "string",
+                "title": "Tipo de mídia",
+                "enum": ["image", "video"],
+                "default": "image",
+              },
+              "src": {
+                "type": "string",
+                "title": "Imagem ou vídeo",
+                "widget": {
+                  "ui:widget": "media-gallery",
+                },
+              },
+              "alt": {
+                "type": "string",
+                "title": "Texto alternativo",
+              },
+            },
+          },
+          "href": {
+            "type": "string",
+            "title": "Link do botão",
+          },
+          "buttonLabel": {
+            "type": "string",
+            "title": "Texto do botão",
+          },
+          "buttonVariant": {
+            "type": "string",
+            "title": "Variante do botão",
+            "enum": [
+              "stroke-white",
+              "primary",
+              "primary-text",
+              "secondary",
+              "secondary-text",
+              "secondary-stroke",
+              "tertiary-stroke",
+              "tertiary-text",
+            ],
+            "enumNames": [
+              "Contorno branco (padrão)",
+              "Primário",
+              "Primário (texto)",
+              "Secundário",
+              "Secundário (texto)",
+              "Secundário (contorno)",
+              "Terciário (contorno)",
+              "Terciário (texto)",
+            ],
+            "default": "stroke-white",
+          },
+        },
+      },
+    },
+    "autoplayInterval": {
+      "type": "number",
+      "title": "Intervalo do autoplay (ms)",
+      "description": "Deixe vazio ou 0 para desativar o autoplay",
+      "default": 6000,
+    },
+  },
+}

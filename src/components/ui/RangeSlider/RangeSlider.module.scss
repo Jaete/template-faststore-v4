@@ -1,0 +1,71 @@
+@use '../../../styles/globals' as *;
+
+$thumb-size: 16px;
+
+.rangeSlider {
+  position: relative;
+  width: 100%;
+  height: $thumb-size;
+}
+
+.rangeSlider__track {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: $color-surface-light;
+  border-radius: 100px;
+  transform: translateY(-50%);
+}
+
+.rangeSlider__fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: $color-brand-blue;
+  border-radius: 100px;
+}
+
+.rangeSlider__input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $thumb-size;
+  margin: 0;
+  background: none;
+  appearance: none;
+  pointer-events: none;
+
+  &::-webkit-slider-runnable-track {
+    background: transparent;
+  }
+
+  &::-moz-range-track {
+    background: transparent;
+  }
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    pointer-events: auto;
+    box-sizing: border-box;
+    width: $thumb-size;
+    height: $thumb-size;
+    background: $color-white;
+    border: 5px solid $color-brand-blue;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  &::-moz-range-thumb {
+    pointer-events: auto;
+    box-sizing: border-box;
+    width: $thumb-size;
+    height: $thumb-size;
+    background: $color-white;
+    border: 5px solid $color-brand-blue;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}

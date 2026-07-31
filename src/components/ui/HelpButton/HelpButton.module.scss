@@ -1,0 +1,32 @@
+@use '../../../styles/globals' as *;
+
+.helpButton {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 18px;
+  height: 18px;
+  padding: 6px;
+  border: none;
+  border-radius: 200px;
+  background: rgba($color-surface-mid, 0.58);
+  cursor: pointer;
+  transition: background 0.2s ease;
+
+  &:hover:not([disabled]),
+  &:focus-visible {
+    background: $color-surface-mid;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &__mark {
+    @include font(0.75rem, $font-weight-medium, $color-white, 120%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

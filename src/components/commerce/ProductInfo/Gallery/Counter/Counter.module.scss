@@ -1,0 +1,8 @@
+@use '../../../../../styles/globals' as *;
+
+.counter {
+  width: fluid(97px);
+  height: fluid(18px);
+  @include paragraph-p3($color-text-light, $text-align: center);
+  line-height: 150%;
+}

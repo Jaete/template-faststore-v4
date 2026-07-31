@@ -1,0 +1,31 @@
+@use '../../../../../styles/globals' as *;
+
+.attachmentSelector {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: fluid(20px);
+  width: 100%;
+
+  @include mobile {
+    gap: 20px;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+  }
+
+  &__label {
+    @include paragraph-p3($color-text-darkest, $weight: $font-weight-light);
+    line-height: 120%;
+    width: 100%;
+  }
+
+  &__required {
+    color: $color-text-darkest;
+  }
+}

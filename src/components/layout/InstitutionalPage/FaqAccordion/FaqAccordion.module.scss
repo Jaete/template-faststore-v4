@@ -1,0 +1,61 @@
+@use '../../../../styles/globals' as *;
+
+.faqAccordion {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: $color-white;
+
+  &__item {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    border-bottom: 1px solid $color-surface-lighter;
+
+    &--open {
+      padding-bottom: 16px;
+      gap: 11px;
+    }
+  }
+
+  &__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    @include font(1rem, $font-weight-medium, $color-text-medium, 130%);
+
+    @media (max-width: 768px) {
+      align-items: flex-start;
+      padding: 8px 0 12px;
+    }
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    color: $color-brand-blue;
+    transition: transform 0.2s ease;
+
+    &--open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__answer {
+    @include paragraph-p2($color-text-medium, $font-weight-light);
+
+    p {
+      margin: 0;
+    }
+  }
+}

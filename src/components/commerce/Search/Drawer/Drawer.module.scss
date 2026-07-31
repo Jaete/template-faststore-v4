@@ -1,0 +1,55 @@
+@use '../../../../styles/globals' as *;
+
+.searchDrawer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+  }
+
+  &__footer {
+    flex-shrink: 0;
+    padding-top: 20px;
+  }
+
+  &__searchBar {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    height: 44px;
+    padding: 5px 16px;
+    background: $color-white;
+    @include border(1px, $color-surface-lighter);
+    border-radius: 4px;
+  }
+
+  &__input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    background: transparent;
+    outline: none;
+    @include paragraph-p3($color-surface-dark, $font-weight-light);
+
+    &::placeholder {
+      @include paragraph-p3($color-surface-dark, $font-weight-light);
+    }
+  }
+
+  &__searchIcon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: $color-primary-darkest;
+  }
+}

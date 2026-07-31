@@ -1,0 +1,91 @@
+$color-brand-red: #b70e0c;
+$color-brand-blue: #0084d5;
+
+$color-primary-darkest: #031d2f;
+$color-primary: #0d4973;
+$color-primary-blue: #086ebb;
+$color-primary-light: #52a6dc;
+$color-primary-lighter: #80c9f8;
+
+$color-accent: #e42731;
+$color-accent-dark: #b70e0c;
+
+$color-surface-darkest: #061720;
+$color-surface-dark: #373737;
+$color-surface-mid: #a1a1a1;
+$color-neutral-200: #cecfd8;
+$color-neutral-300: #707176;
+$color-neutral-400: #3c3d4f;
+$color-surface-light: #ededed;
+$color-surface-lighter: #f3f5f7;
+$color-surface-lightest: #f1f8fc;
+$color-surface-soft: #f5f5f5;
+$color-surface-blue-tint: #e9eef5;
+$color-surface-cool: #e9eef5;
+$color-surface-translucent: rgba(236, 236, 236, 0.32);
+$color-white: #ffffff;
+
+$color-text-strongest: #070707;
+$color-text-ink: #050e24;
+$color-text-darkest: #181818;
+$color-text-dark: #181d27;
+$color-text-mid: #535862;
+$color-text-light: #a1a1a1;
+
+$color-text: $color-text-dark;
+$color-text-medium: $color-surface-dark;
+$color-text-muted: $color-text-mid;
+$color-text-inverse: $color-white;
+$color-border: $color-surface-light;
+$color-border-soft: #e8e8ee;
+$color-surface: $color-white;
+$color-error: $color-accent;
+$color-error-dark: $color-accent-dark;
+$color-error-400: #e7234f;
+$color-success: #42ad4e;
+$color-disabled-bg: #f3f3f3;
+$color-disabled-text: #454545;
+
+$color-shadow-soft: rgba(145, 147, 167, 0.16);
+$color-shadow-sm-strong: rgba(10, 13, 18, 0.1);
+$color-shadow-sm-soft: rgba(10, 13, 18, 0.06);
+
+@mixin gradient-linear($direction, $colors...) {
+  background: linear-gradient($direction, $colors);
+}
+
+@mixin gradient-radial($shape: circle, $colors...) {
+  background: radial-gradient($shape, $colors);
+}
+
+@mixin gradient-text-numbers() {
+  @include gradient-linear(
+    172.85deg,
+    $color-primary-lighter 25.93%,
+    $color-primary-light 58.07%,
+    $color-brand-blue 97.05%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+@mixin gradient-surface-light() {
+  @include gradient-linear(
+    90deg,
+    $color-surface-blue-tint 0%,
+    $color-surface-soft 100%
+  );
+}
+
+@mixin gradient-media-overlay() {
+  background:
+    linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    linear-gradient(
+      172.85deg,
+      $color-primary-lighter 25.93%,
+      $color-primary-light 58.07%,
+      $color-brand-blue 97.05%
+    );
+}

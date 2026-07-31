@@ -1,0 +1,107 @@
+{
+  "$extends": [
+    "#/$defs/base-component"
+  ],
+  "$componentKey": "SearchDrawer",
+  "$componentTitle": "Drawer de Busca",
+  "type": "object",
+  "properties": {
+    "topSearches": {
+      "title": "Termos mais buscados",
+      "description": "Termos exibidos quando o campo de busca está vazio. Sem termos, são calculados automaticamente. Máx. 10.",
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "type": "string",
+        "title": "Termo",
+      },
+    },
+    "categories": {
+      "title": "Categorias",
+      "description": "Carrossel de categorias exibido no footer do drawer de busca",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "title": "Categoria",
+        "required": [
+          "name",
+          "imageSrc",
+          "link"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Nome da categoria",
+          },
+          "imageSrc": {
+            "type": "string",
+            "title": "Imagem",
+            "widget": {
+              "ui:widget": "media-gallery",
+            },
+          },
+          "imageAlt": {
+            "type": "string",
+            "title": "Texto alternativo da imagem",
+          },
+          "link": {
+            "type": "object",
+            "title": "Link",
+            "required": [
+              "label",
+              "href"
+            ],
+            "properties": {
+              "label": {
+                "type": "string",
+                "title": "Texto do link",
+              },
+              "href": {
+                "type": "string",
+                "title": "Link (URL)",
+              },
+            },
+          },
+        },
+      },
+    },
+    "suggestionsShelf": {
+      "title": "Vitrine de sugestões",
+      "description": "Vitrine de produtos exibida no footer da busca quando há termo digitado, no lugar do carrossel de categorias",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "title": "Título da vitrine",
+        },
+        "collectionId": {
+          "type": "string",
+          "title": "ID da coleção",
+          "description": "Para buscar produtos de uma coleção (productClusterIds). Consulte os IDs na página de Coleções",
+        },
+        "categoryId": {
+          "type": "string",
+          "title": "ID/slug da categoria",
+          "description": "Para buscar produtos de uma categoria de nível 1",
+        },
+        "searchByTerm": {
+          "type": "boolean",
+          "title": "Mostrar produtos com base no termo buscado?",
+          "description": "Quando marcado, ignora ID da coleção/categoria e busca os produtos pelo termo digitado na busca",
+          "default": false,
+        },
+        "bestSellers": {
+          "type": "boolean",
+          "title": "Mais vendidos?",
+          "description": "Ordena os produtos por mais vendidos (orders_desc)",
+          "default": false,
+        },
+        "numberOfItems": {
+          "type": "integer",
+          "title": "Quantidade de produtos",
+          "default": 10,
+        },
+      },
+    },
+  },
+}

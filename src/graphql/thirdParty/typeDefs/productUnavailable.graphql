@@ -1,0 +1,23 @@
+type ProductUnavailableResult {
+  """`success` ou `error` — o resolver nunca propaga a exceção original."""
+  status: String!
+}
+
+input ProductUnavailableInput {
+  """Nome de quem quer ser avisado."""
+  name: String!
+  """E-mail que recebe o aviso quando o SKU voltar ao estoque."""
+  email: String!
+  """SKU (itemId) sem estoque no momento do cadastro."""
+  sku: String!
+}
+
+extend type Mutation {
+  """
+  Cadastra um e-mail para aviso de reposição de um SKU sem estoque, via o
+  endpoint legado `AviseMe.aspx` da VTEX. O disparo do aviso em si (quando o
+  SKU volta a ter estoque) é responsabilidade da plataforma — não há job ou
+  watcher neste repositório.
+  """
+  productUnavailable(input: ProductUnavailableInput!): ProductUnavailableResult!
+}

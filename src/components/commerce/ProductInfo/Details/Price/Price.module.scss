@@ -1,0 +1,74 @@
+@use '../../../../../styles/globals' as *;
+
+.price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: fluid(10px);
+
+  &__line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: fluid(8px);
+  }
+
+  &__list {
+    @include strikethrough2-size-regular($color-text-medium);
+    text-transform: uppercase;
+  }
+
+  &__divider {
+    @include font-secondary(1rem, $font-weight-light, $color-text-medium, 120%);
+  }
+
+  &__selling {
+    @include h4-size-d($color-brand-blue);
+    line-height: 130%;
+
+    @include mobile {
+      font-size: 1rem;
+      line-height: 130%;
+    }
+  }
+
+  &__installment {
+    @include font(0.75rem, $font-weight-light, $color-text-medium, 120%);
+  }
+
+  &__seeInstallments {
+    @include link2-size-regular($color-text-medium);
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__flag {
+    @include font(0.6875rem, $font-weight-semibold, $color-white, 150%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: fluid(4px);
+    background: $color-accent;
+  }
+
+  &__pix {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: fluid(5px) fluid(6px);
+    background: $color-surface-lightest;
+  }
+
+  &__pixLabel {
+    @include font(0.75rem, $font-weight-medium, $color-primary-darkest, 120%);
+    white-space: nowrap;
+  }
+}

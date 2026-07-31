@@ -1,0 +1,29 @@
+{
+  "$extends": ["#/$defs/base-component"],
+  "$componentKey": "ProductAccordion",
+  "$componentTitle": "Abas do Produto",
+  "type": "object",
+  "properties": {
+    // O conteúdo das abas vem inteiro do catálogo VTEX: a primeira aba é a
+    // `description` do produto e, depois dela, cada specificationGroup
+    // cadastrado vira uma aba com a tabela das suas especificações. Nenhum
+    // grupo é tratado de forma especial — o que aparece na PDP é decidido no
+    // cadastro da specification no admin da VTEX.
+    "descriptionTitle": {
+      "type": "string",
+      "title": "Título da aba: Descrição",
+      "default": "Descrição",
+    },
+    "showMeasurements": {
+      "type": "boolean",
+      "title": "Exibir aba de medidas do produto",
+      "description": "Exibe altura, largura, profundidade e peso do SKU, com e sem embalagem. Requer as credenciais VTEX_APP_KEY_SKU e VTEX_APP_TOKEN_SKU configuradas como secrets — sem elas a aba não aparece.",
+      "default": false,
+    },
+    "measurementsTitle": {
+      "type": "string",
+      "title": "Título da aba: Medidas",
+      "default": "Medidas",
+    },
+  },
+}

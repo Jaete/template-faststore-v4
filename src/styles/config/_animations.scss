@@ -1,0 +1,171 @@
+@keyframes fs-skeleton-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@mixin skeleton-pulse($duration: 1.5s) {
+  animation: fs-skeleton-pulse $duration ease-in-out infinite;
+}
+
+@mixin slide-in(
+  $direction: left,
+  $duration: 300ms,
+  $distance: 16px,
+  $easing: ease-out
+) {
+  $offset: null;
+  $axis: null;
+
+  @if $direction == left {
+    $offset: -$distance;
+    $axis: X;
+  } @else if $direction == right {
+    $offset: $distance;
+    $axis: X;
+  } @else if $direction == top {
+    $offset: -$distance;
+    $axis: Y;
+  } @else {
+    $offset: $distance;
+    $axis: Y;
+  }
+
+  @keyframes fs-slide-in-#{$direction} {
+    from {
+      opacity: 0;
+      transform: translate#{$axis }(#{$offset});
+    }
+
+    to {
+      opacity: 1;
+      transform: translate#{$axis }(0);
+    }
+  }
+
+  animation: fs-slide-in-#{$direction} $duration $easing;
+}
+
+@mixin slide-out(
+  $direction: left,
+  $duration: 300ms,
+  $distance: 16px,
+  $easing: ease-in
+) {
+  $offset: null;
+  $axis: null;
+
+  @if $direction == left {
+    $offset: -$distance;
+    $axis: X;
+  } @else if $direction == right {
+    $offset: $distance;
+    $axis: X;
+  } @else if $direction == top {
+    $offset: -$distance;
+    $axis: Y;
+  } @else {
+    $offset: $distance;
+    $axis: Y;
+  }
+
+  @keyframes fs-slide-out-#{$direction} {
+    from {
+      opacity: 1;
+      transform: translate#{$axis }(0);
+    }
+
+    to {
+      opacity: 0;
+      transform: translate#{$axis }(#{$offset});
+    }
+  }
+
+  animation: fs-slide-out-#{$direction} $duration $easing forwards;
+}
+
+@mixin slide-in-edge($direction: left, $duration: 300ms, $easing: ease-out) {
+  $offset: null;
+  $axis: null;
+
+  @if $direction == left {
+    $offset: -100%;
+    $axis: X;
+  } @else if $direction == right {
+    $offset: 100%;
+    $axis: X;
+  } @else if $direction == top {
+    $offset: -100%;
+    $axis: Y;
+  } @else {
+    $offset: 100%;
+    $axis: Y;
+  }
+
+  @keyframes fs-slide-in-edge-#{$direction} {
+    from {
+      opacity: 0;
+      transform: translate#{$axis }(#{$offset});
+    }
+
+    to {
+      opacity: 1;
+      transform: translate#{$axis }(0);
+    }
+  }
+
+  animation: fs-slide-in-edge-#{$direction} $duration $easing;
+}
+
+@mixin slide-out-edge($direction: left, $duration: 300ms, $easing: ease-in) {
+  $offset: null;
+  $axis: null;
+
+  @if $direction == left {
+    $offset: -100%;
+    $axis: X;
+  } @else if $direction == right {
+    $offset: 100%;
+    $axis: X;
+  } @else if $direction == top {
+    $offset: -100%;
+    $axis: Y;
+  } @else {
+    $offset: 100%;
+    $axis: Y;
+  }
+
+  @keyframes fs-slide-out-edge-#{$direction} {
+    from {
+      opacity: 1;
+      transform: translate#{$axis }(0);
+    }
+
+    to {
+      opacity: 0;
+      transform: translate#{$axis }(#{$offset});
+    }
+  }
+
+  animation: fs-slide-out-edge-#{$direction} $duration $easing forwards;
+}
+
+@mixin skeleton-pulse($duration: 1.5s) {
+  @keyframes fs-skeleton-pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  animation: fs-skeleton-pulse $duration ease-in-out infinite;
+}

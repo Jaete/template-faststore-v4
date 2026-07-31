@@ -1,0 +1,51 @@
+@use '../../../styles/globals' as *;
+
+$carousel-gutter: 128px;
+
+.popularCategories {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  margin-top: 48px;
+  margin-bottom: 80px;
+
+  &__title {
+    @include font(
+      1.75rem,
+      $font-weight-light,
+      $color-primary-darkest,
+      130%,
+      0.02em,
+      center
+    );
+    width: 100%;
+
+    * {
+      margin: 0;
+    }
+
+    strong {
+      font-weight: 500;
+    }
+  }
+
+  &__carouselWrapper {
+    display: grid;
+    width: 100%;
+    @include default-page-width($carousel-gutter, 16px);
+  }
+
+  &__carousel {
+    --carousel-gap: 40px;
+    grid-area: 1 / 1;
+    overflow: hidden;
+  }
+
+  &__arrows {
+    grid-area: 1 / 1;
+    align-self: center;
+    justify-self: stretch;
+  }
+}

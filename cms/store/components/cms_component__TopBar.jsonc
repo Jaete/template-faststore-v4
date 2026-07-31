@@ -1,0 +1,41 @@
+{
+  "$extends": ["#/$defs/base-component"],
+  "$componentKey": "TopBar",
+  "$componentTitle": "Topbar do Header",
+  "type": "object",
+  "required": ["benefits"],
+  "properties": {
+    "benefits": {
+      "title": "Benefícios",
+      "description": "Textos exibidos no carrossel de benefícios da topbar",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "title": "Texto do benefício",
+        "widget": {
+          "ui:widget": "draftjs-rich-text",
+        },
+      },
+    },
+    "links": {
+      "title": "Links",
+      "description": "Links institucionais exibidos à direita (máximo de 3)",
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "title": "Link",
+        "properties": {
+          "label": {
+            "type": "string",
+            "title": "Texto exibido",
+          },
+          "href": {
+            "type": "string",
+            "title": "Link (URL)",
+          },
+        },
+      },
+    },
+  },
+}

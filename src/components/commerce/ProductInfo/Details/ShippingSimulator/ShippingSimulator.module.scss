@@ -1,0 +1,107 @@
+@use '../../../../../styles/globals' as *;
+
+.shippingSimulator {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+
+  &__title {
+    @include font(0.875rem, $font-weight-medium, #111111, 150%);
+    width: 100%;
+  }
+
+  &__inputRow {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    gap: 12px;
+    background: rgba(243, 245, 247, 0.48);
+    @include border(1px, $color-surface-light);
+    border-radius: 4px;
+  }
+
+  &__input {
+    flex: 1;
+    min-width: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    @include font(0.625rem, $font-weight-regular, #555555, 150%);
+
+    &::placeholder {
+      color: #555555;
+    }
+  }
+
+  &__calculate {
+    flex: none;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    @include font(0.875rem, $font-weight-medium, $color-brand-blue, 150%);
+    white-space: nowrap;
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+  }
+
+  &__helpLink {
+    @include font(0.75rem, $font-weight-regular, #2e6ab3, 150%);
+    width: 100%;
+    text-decoration-line: underline;
+  }
+
+  &__error {
+    @include paragraph-p3($color-error);
+    width: 100%;
+    margin: 0;
+  }
+
+  &__results {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__option {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    padding: 10px;
+    background: $color-surface-lightest;
+    border-radius: 4px;
+  }
+
+  &__optionName {
+    @include paragraph-p3($color-text-darkest, $font-weight-medium);
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__optionDays {
+    @include paragraph-p3($color-text-medium);
+    flex: none;
+  }
+
+  &__optionPrice {
+    @include paragraph-p3($color-text-darkest, $font-weight-medium);
+    flex: none;
+  }
+}

@@ -1,0 +1,39 @@
+@use '../../../../styles/globals' as *;
+
+.breadcrumb {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__link {
+    @include font(0.75rem, $font-weight-light, #454545);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__current {
+    @include font(0.75rem, $font-weight-light, #070707);
+  }
+
+  &__separator {
+    width: 14px;
+    height: 0;
+    border-top: 0.5px solid #070707;
+    transform: rotate(-90deg);
+  }
+}

@@ -1,0 +1,294 @@
+{
+  "$extends": ["#/$defs/base-component"],
+  "$componentKey": "Header",
+  "$componentTitle": "Header",
+  "type": "object",
+  "required": ["navigation"],
+  // NOTA: o objeto de banner (label/href/imageSrc/imageAlt) é repetido nos 4
+  // níveis (item de nav, departamento, categoria, subcategoria) de propósito:
+  // o generate-schema NÃO resolve $ref/$defs locais (passa verbatim, e
+  // "#/$defs/banner" ficaria pendente no cms_schema.json final). Ao alterar
+  // um campo de banner, replicar nos 4 blocos.
+  "properties": {
+    "logo": {
+      "title": "Logo",
+      "description": "Logo exibido à esquerda do header",
+      "type": "object",
+      "required": ["src", "alt"],
+      "properties": {
+        "src": {
+          "type": "string",
+          "title": "Imagem do logo",
+          "widget": {
+            "ui:widget": "media-gallery",
+          },
+        },
+        "alt": {
+          "type": "string",
+          "title": "Texto alternativo",
+        },
+        "href": {
+          "type": "string",
+          "title": "Link do logo",
+          "default": "/",
+        },
+      },
+    },
+    "navigation": {
+      "title": "Navegação principal",
+      "description": "Links do menu principal exibidos no desktop",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "title": "Item de menu",
+        "required": ["label", "href"],
+        "properties": {
+          "label": {
+            "type": "string",
+            "title": "Texto exibido",
+          },
+          "href": {
+            "type": "string",
+            "title": "Link (URL)",
+          },
+          "showOnMobile": {
+            "type": "boolean",
+            "title": "Exibir no menu mobile",
+            "description": "Se marcado, este item aparece no menu mobile com o mesmo drill-down de departamentos/categorias configurado abaixo",
+            "default": false,
+          },
+          "banners": {
+            "title": "Banners padrão do painel",
+            "description": "Exibidos enquanto nenhum departamento está em hover. Com departamentos, são exibidos no máximo 3; sem departamentos, ocupam o painel inteiro e são exibidos até 4",
+            "type": "array",
+            "maxItems": 4,
+            "items": {
+              "type": "object",
+              "title": "Banner",
+              "required": ["label", "href", "imageSrc"],
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "title": "Título sobre a imagem",
+                },
+                "href": {
+                  "type": "string",
+                  "title": "Link (URL)",
+                },
+                "imageSrc": {
+                  "type": "string",
+                  "title": "Imagem",
+                  "widget": {
+                    "ui:widget": "media-gallery",
+                  },
+                },
+                "imageAlt": {
+                  "type": "string",
+                  "title": "Texto alternativo da imagem",
+                },
+              },
+            },
+          },
+          "departments": {
+            "title": "Departamentos",
+            "description": "Coluna esquerda do mega menu — o item expande o painel no hover quando tem departamentos ou banners",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "title": "Departamento",
+              "required": ["label", "href"],
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "title": "Texto exibido",
+                },
+                "href": {
+                  "type": "string",
+                  "title": "Link (URL)",
+                },
+                "categories": {
+                  "title": "Categorias",
+                  "description": "Reveladas no hover do departamento (têm precedência sobre os banners)",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "title": "Categoria",
+                    "required": ["label", "href"],
+                    "properties": {
+                      "label": {
+                        "type": "string",
+                        "title": "Texto exibido",
+                      },
+                      "href": {
+                        "type": "string",
+                        "title": "Link (URL)",
+                      },
+                      "categories": {
+                        "title": "Subcategorias",
+                        "description": "Reveladas no hover da categoria (têm precedência sobre o banner)",
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "title": "Subcategoria",
+                          "required": ["label", "href"],
+                          "properties": {
+                            "label": {
+                              "type": "string",
+                              "title": "Texto exibido",
+                            },
+                            "href": {
+                              "type": "string",
+                              "title": "Link (URL)",
+                            },
+                            "banners": {
+                              "title": "Banner",
+                              "description": "Banner único revelado no hover da subcategoria",
+                              "type": "array",
+                              "maxItems": 1,
+                              "items": {
+                                "type": "object",
+                                "title": "Banner",
+                                "required": ["label", "href", "imageSrc"],
+                                "properties": {
+                                  "label": {
+                                    "type": "string",
+                                    "title": "Título (acessibilidade)",
+                                  },
+                                  "href": {
+                                    "type": "string",
+                                    "title": "Link (URL)",
+                                  },
+                                  "imageSrc": {
+                                    "type": "string",
+                                    "title": "Imagem",
+                                    "widget": {
+                                      "ui:widget": "media-gallery",
+                                    },
+                                  },
+                                  "imageAlt": {
+                                    "type": "string",
+                                    "title": "Texto alternativo da imagem",
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                      "banners": {
+                        "title": "Banner",
+                        "description": "Banner único revelado no hover da categoria, usado quando ela não tem subcategorias",
+                        "type": "array",
+                        "maxItems": 1,
+                        "items": {
+                          "type": "object",
+                          "title": "Banner",
+                          "required": ["label", "href", "imageSrc"],
+                          "properties": {
+                            "label": {
+                              "type": "string",
+                              "title": "Título (acessibilidade)",
+                            },
+                            "href": {
+                              "type": "string",
+                              "title": "Link (URL)",
+                            },
+                            "imageSrc": {
+                              "type": "string",
+                              "title": "Imagem",
+                              "widget": {
+                                "ui:widget": "media-gallery",
+                              },
+                            },
+                            "imageAlt": {
+                              "type": "string",
+                              "title": "Texto alternativo da imagem",
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+                "banners": {
+                  "title": "Banners",
+                  "description": "Exibidos no hover do departamento quando ele não tem categorias (máximo de 3)",
+                  "type": "array",
+                  "maxItems": 3,
+                  "items": {
+                    "type": "object",
+                    "title": "Banner",
+                    "required": ["label", "href", "imageSrc"],
+                    "properties": {
+                      "label": {
+                        "type": "string",
+                        "title": "Título sobre a imagem",
+                      },
+                      "href": {
+                        "type": "string",
+                        "title": "Link (URL)",
+                      },
+                      "imageSrc": {
+                        "type": "string",
+                        "title": "Imagem",
+                        "widget": {
+                          "ui:widget": "media-gallery",
+                        },
+                      },
+                      "imageAlt": {
+                        "type": "string",
+                        "title": "Texto alternativo da imagem",
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+    "footerLinks": {
+      "title": "Links do rodapé mobile",
+      "description": "Links institucionais exibidos no rodapé do menu mobile, acima das redes sociais (ex.: Atendimento, Simuladores)",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "title": "Link",
+        "required": ["label", "href"],
+        "properties": {
+          "label": {
+            "type": "string",
+            "title": "Texto exibido",
+          },
+          "href": {
+            "type": "string",
+            "title": "Link (URL)",
+          },
+        },
+      },
+    },
+    "socialLinks": {
+      "title": "Redes sociais",
+      "description": "Ícones exibidos no rodapé do menu mobile",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "title": "Rede social",
+        "required": ["network", "url"],
+        "properties": {
+          "network": {
+            "type": "string",
+            "title": "Rede",
+            "enum": ["linkedin", "instagram", "tiktok", "youtube", "pinterest"],
+            "enumNames": ["LinkedIn", "Instagram", "TikTok", "YouTube", "Pinterest"],
+          },
+          "url": {
+            "type": "string",
+            "title": "Link (URL)",
+          },
+        },
+      },
+    },
+  },
+}

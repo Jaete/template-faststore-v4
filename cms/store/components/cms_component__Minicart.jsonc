@@ -1,0 +1,179 @@
+{
+  "$extends": [
+    "#/$defs/base-component"
+  ],
+  "$componentKey": "Minicart",
+  "$componentTitle": "Minicart",
+  "type": "object",
+  "properties": {
+    "emptyCart": {
+      "title": "Estado vazio",
+      "description": "Textos exibidos quando o carrinho está sem produtos",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "title": "Título",
+          "default": "Seu carrinho está vazio",
+        },
+        "subtitle": {
+          "type": "string",
+          "title": "Subtítulo",
+          "default": "Adicione produtos e eles aparecerão aqui",
+        },
+        "buttonLabel": {
+          "type": "string",
+          "title": "Texto do botão",
+          "description": "Botão que fecha o minicart",
+          "default": "Continuar comprando",
+        },
+      },
+    },
+    "freeShipping": {
+      "title": "Barra de frete grátis",
+      "description": "Barra de progresso exibida acima do footer quando o carrinho tem produtos. ATENÇÃO: a barra é APENAS VISUAL — ela não cria a promoção de frete grátis. Configure a promoção nas Promoções da VTEX e mantenha o valor mínimo igual nos dois lugares.",
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "title": "Habilitar barra de frete grátis?",
+          "description": "Desabilitada, a barra não é renderizada",
+          "default": true,
+        },
+        "threshold": {
+          "type": "number",
+          "title": "Valor mínimo para frete grátis (R$)",
+          "description": "Apenas visual — deve espelhar o valor configurado na promoção de frete grátis da VTEX. Sem valor, a barra não aparece.",
+        },
+        "pendingMessage": {
+          "type": "string",
+          "title": "Mensagem de progresso",
+          "description": "Use {remaining} onde o valor restante deve aparecer",
+          "default": "Faltam {remaining} para você ganhar Frete Grátis!",
+        },
+        "achievedMessage": {
+          "type": "string",
+          "title": "Mensagem de frete grátis atingido",
+          "default": "Você ganhou Frete Grátis!",
+        },
+      },
+    },
+    "footer": {
+      "title": "Footer (carrinho com produtos)",
+      "description": "Textos do footer exibido quando o carrinho tem produtos",
+      "type": "object",
+      "properties": {
+        "coupon": {
+          "title": "Cupom de desconto",
+          "description": "Campo de cupom exibido acima do subtotal. O cupom é aplicado no orderForm (marketingData) e o desconto aparece no checkout.",
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "title": "Habilitar campo de cupom?",
+              "description": "Desabilitado, o campo não é renderizado",
+              "default": true,
+            },
+            "placeholder": {
+              "type": "string",
+              "title": "Placeholder do campo",
+              "default": "Adicionar cupom de desconto",
+            },
+            "applyLabel": {
+              "type": "string",
+              "title": "Texto do botão de aplicar",
+              "default": "Aplicar",
+            },
+            "removeLabel": {
+              "type": "string",
+              "title": "Texto do botão de remover",
+              "default": "Remover",
+            },
+            "successMessage": {
+              "type": "string",
+              "title": "Mensagem de cupom aplicado",
+              "default": "Cupom aplicado com sucesso!",
+            },
+            "errorMessage": {
+              "type": "string",
+              "title": "Mensagem de cupom inválido",
+              "default": "Cupom inválido",
+            },
+          },
+        },
+        "subtotalLabel": {
+          "type": "string",
+          "title": "Rótulo do subtotal",
+          "default": "Subtotal",
+        },
+        "shippingNote": {
+          "type": "string",
+          "title": "Nota de frete",
+          "description": "Texto exibido acima dos botões",
+          "default": "Frete e descontos serão calculados no checkout",
+        },
+        "checkoutButtonLabel": {
+          "type": "string",
+          "title": "Texto do botão de checkout",
+          "default": "Finalizar compra",
+        },
+        "continueButtonLabel": {
+          "type": "string",
+          "title": "Texto do botão de continuar comprando",
+          "description": "Botão que fecha o minicart",
+          "default": "Continuar comprando",
+        },
+      },
+    },
+    "categories": {
+      "title": "Categorias",
+      "description": "Carrossel de categorias exibido no footer do minicart vazio",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "title": "Categoria",
+        "required": [
+          "name",
+          "imageSrc",
+          "link"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Nome da categoria",
+          },
+          "imageSrc": {
+            "type": "string",
+            "title": "Imagem",
+            "widget": {
+              "ui:widget": "media-gallery",
+            },
+          },
+          "imageAlt": {
+            "type": "string",
+            "title": "Texto alternativo da imagem",
+          },
+          "link": {
+            "type": "object",
+            "title": "Link",
+            "required": [
+              "href"
+            ],
+            "properties": {
+              "label": {
+                "type": "string",
+                "title": "Texto do link",
+                "description": "Subtítulo exibido abaixo do nome da categoria",
+                "default": "Acesse a categoria",
+              },
+              "href": {
+                "type": "string",
+                "title": "Link (URL)",
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+}

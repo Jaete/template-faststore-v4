@@ -1,0 +1,75 @@
+@use '../../../../styles/globals' as *;
+
+.arrows {
+  --carousel-arrows-size: 40px;
+  --carousel-arrows-offset: -20px;
+  --carousel-arrows-bg: #{$color-white};
+  --carousel-arrows-bg-hover: #{$color-surface-lighter};
+  --carousel-arrows-border-color: #{$color-border};
+  --carousel-arrows-shadow: 0 2px 8px #{$color-shadow-soft};
+  --carousel-arrows-icon-size: 20px;
+  --carousel-arrows-icon-color: #{$color-surface-dark};
+  --carousel-arrows-icon-color-disabled: #{$color-surface-mid};
+
+  display: flex;
+  align-items: center;
+  width: 100%;
+  pointer-events: none;
+
+  &__button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: var(--carousel-arrows-size);
+    height: var(--carousel-arrows-size);
+    padding: 0;
+    border: 1px solid var(--carousel-arrows-border-color);
+    border-radius: 50%;
+    background: var(--carousel-arrows-bg);
+    box-shadow: var(--carousel-arrows-shadow);
+    cursor: pointer;
+    pointer-events: auto;
+    transition: background-color 0.2s ease;
+    z-index: 1;
+
+    &:hover {
+      background: var(--carousel-arrows-bg-hover);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+
+      .arrows__icon {
+        color: var(--carousel-arrows-icon-color-disabled);
+      }
+    }
+
+    &--previous {
+      left: var(--carousel-arrows-offset);
+    }
+
+    &--next {
+      right: var(--carousel-arrows-offset);
+      margin-left: auto;
+    }
+
+    &--plain {
+      border: 0;
+      border-radius: 0;
+      background: none;
+      box-shadow: none;
+
+      &:hover {
+        background: none;
+      }
+    }
+  }
+
+  &__icon {
+    width: var(--carousel-arrows-icon-size);
+    height: var(--carousel-arrows-icon-size);
+    color: var(--carousel-arrows-icon-color);
+  }
+}

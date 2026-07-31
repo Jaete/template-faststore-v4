@@ -1,0 +1,21 @@
+@use '../../../../styles/globals' as *;
+
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: fluid(24px);
+  width: 100%;
+
+  @include mobile {
+    gap: 24px;
+  }
+
+  &__divider {
+    width: 100%;
+    height: 0;
+    margin: 0;
+    border: none;
+    border-top: 1px solid $color-surface-lighter;
+  }
+}

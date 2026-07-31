@@ -1,0 +1,82 @@
+@use '../../../../styles/globals' as *;
+
+.minicartFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 12px 20px 16px;
+  background: $color-surface-lighter;
+  border-top: 1px solid $color-surface-light;
+
+  &__prices {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: gap 0.25s ease;
+
+    &[data-has-discount='false'] {
+      gap: 0;
+
+      .minicartFooter__total {
+        margin-top: 8px;
+      }
+    }
+  }
+
+  &__subtotal,
+  &__discount {
+    display: grid;
+    grid-template-rows: 1fr;
+    opacity: 1;
+    transition:
+      grid-template-rows 0.25s ease,
+      opacity 0.25s ease;
+
+    &[data-visible='false'] {
+      grid-template-rows: 0fr;
+      opacity: 0;
+    }
+  }
+
+  &__rowContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    overflow: hidden;
+    min-height: 0;
+
+    span {
+      @include paragraph-p2($color-text-medium, $font-weight-light);
+    }
+  }
+
+  &__divider {
+    width: 100%;
+    height: 1px;
+    background: $color-surface-light;
+  }
+
+  &__total {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+
+    span {
+      @include font(1rem, $font-weight-medium, $color-primary-darkest, 130%);
+    }
+  }
+
+  &__shippingNote {
+    @include paragraph-p3($color-primary-darkest, $font-weight-light, center);
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}

@@ -1,0 +1,41 @@
+@use '../../../styles/globals' as *;
+
+.fileDownloadItem {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid $color-surface-lighter;
+
+  @media (max-width: 768px) {
+    align-self: stretch;
+    width: 100%;
+  }
+
+  &__label {
+    min-width: 140px;
+    @include paragraph-p2($color-primary-darkest, $font-weight-regular);
+
+    @media (max-width: 768px) {
+      flex: 1;
+      min-width: 0;
+    }
+  }
+
+  &__download {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border: none;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+    @include paragraph-p2($color-primary-darkest, $font-weight-light);
+  }
+
+  &__downloadIcon {
+    width: 18px;
+    height: 18px;
+    color: $color-primary-light;
+  }
+}

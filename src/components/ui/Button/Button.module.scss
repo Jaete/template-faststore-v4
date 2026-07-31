@@ -1,0 +1,185 @@
+@use '../../../styles/globals' as *;
+
+.button {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  box-sizing: border-box;
+  @include font(0.875rem, $font-weight-medium, currentColor, 140%);
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &--primary {
+    background: $color-brand-blue;
+    color: $color-white;
+
+    &:hover:not([disabled]):not(.button--disabled) {
+      background: $color-primary-light;
+    }
+
+    &.button--disabled,
+    &[disabled] {
+      background: $color-disabled-bg;
+      color: $color-disabled-text;
+    }
+  }
+
+  &--primary-text {
+    background: transparent;
+    border-radius: 2px;
+    color: $color-brand-blue;
+    border-bottom: 1px solid transparent;
+
+    &:hover:not([disabled]):not(.button--disabled) {
+      border-bottom-color: $color-brand-blue;
+    }
+
+    &.button--disabled,
+    &[disabled] {
+      color: $color-disabled-text;
+    }
+  }
+
+  &--secondary {
+    background: $color-primary;
+    color: $color-white;
+
+    &:hover:not([disabled]):not(.button--disabled) {
+      background: $color-primary-darkest;
+    }
+
+    &.button--disabled,
+    &[disabled] {
+      background: $color-disabled-bg;
+      color: $color-disabled-text;
+    }
+  }
+
+  &--secondary-text {
+    background: transparent;
+    border-radius: 2px;
+    color: $color-primary;
+    border-bottom: 1px solid transparent;
+
+    &:hover:not([disabled]):not(.button--disabled) {
+      border-bottom-color: $color-primary;
+    }
+
+    &.button--disabled,
+    &[disabled] {
+      color: $color-disabled-text;
+    }
+  }
+
+  &--secondary-stroke {
+    background: $color-white;
+    @include border(1px, $color-primary);
+    color: $color-primary;
+
+    &:hover:not([disabled]):not(.button--disabled) {
+      background: $color-primary-darkest;
+      @include border(1px, $color-primary-darkest);
+      color: $color-white;
+    }
+
+    &.button--disabled,
+    &[disabled] {
+      background: $color-disabled-bg;
+      @include border(1px, $color-disabled-text);
+      color: $color-disabled-text;
+    }
+  }
+
+  &--tertiary {
+    background: $color-surface-lighter;
+    color: $color-primary-darkest;
+
+    &:hover:not([disabled]):not(.button--disabled) {
+      background: $color-surface-light;
+    }
+
+    &.button--disabled,
+    &[disabled] {
+      background: $color-disabled-bg;
+      color: $color-disabled-text;
+    }
+  }
+
+  &--tertiary-stroke {
+    background: transparent;
+    @include border(1px, $color-primary-darkest);
+    color: $color-primary-darkest;
+
+    &:hover:not([disabled]):not(.button--disabled) {
+      background: $color-surface-lighter;
+    }
+
+    &.button--disabled,
+    &[disabled] {
+      background: $color-disabled-bg;
+      @include border(1px, $color-disabled-text);
+      color: $color-disabled-text;
+    }
+  }
+
+  &--tertiary-text {
+    background: transparent;
+    border-radius: 2px;
+    color: $color-white;
+    border-bottom: 1px solid transparent;
+
+    &:hover:not([disabled]):not(.button--disabled) {
+      border-bottom-color: $color-white;
+    }
+
+    &.button--disabled,
+    &[disabled] {
+      color: $color-disabled-text;
+    }
+  }
+
+  &--stroke-white {
+    background: transparent;
+    @include border(0.5px, $color-white);
+    color: $color-white;
+
+    &:hover:not([disabled]):not(.button--disabled) {
+      background: $color-white;
+      color: $color-primary-darkest;
+    }
+
+    &.button--disabled,
+    &[disabled] {
+      @include border(0.5px, $color-disabled-text);
+      color: $color-disabled-text;
+    }
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  &__spinner {
+    width: 1.4em;
+    height: 1.4em;
+    flex-shrink: 0;
+  }
+}

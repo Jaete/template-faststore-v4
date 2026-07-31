@@ -1,0 +1,61 @@
+@use '../../../../../styles/globals' as *;
+
+$line-height: calc(0.75rem * 1.4);
+
+.description {
+  @include paragraph-p3($color-text-medium, $weight: $font-weight-light);
+  width: 100%;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+
+  &--clamped {
+    .description__floatSpacer {
+      float: right;
+      width: 0;
+      height: calc(3 * #{$line-height} - #{$line-height});
+    }
+
+    .description__toggle {
+      float: right;
+      clear: right;
+      background: $color-white;
+    }
+  }
+
+  b,
+  strong {
+    font-weight: $font-weight-semibold;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  ul,
+  ol {
+    margin: 0;
+    padding-inline-start: 1.25rem;
+  }
+
+  a {
+    color: $color-brand-blue;
+    text-decoration: underline;
+  }
+
+  &__toggle {
+    @include link2-size-regular($color-brand-blue);
+    display: inline;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: underline;
+    margin-right: 10px;
+    margin-top: 2px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

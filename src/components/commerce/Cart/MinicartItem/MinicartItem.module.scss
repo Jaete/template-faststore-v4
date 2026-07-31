@@ -1,0 +1,78 @@
+@use '../../../../styles/globals' as *;
+
+.minicartItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+
+  &__image {
+    flex-shrink: 0;
+    width: 102px;
+    height: 113px;
+    object-fit: cover;
+    border-radius: 3px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: stretch;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__nameRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  &__name {
+    @include font(0.75rem, $font-weight-regular, $color-text-strongest, 140%);
+    @include line-clamp(2);
+    @include text-ellipsis;
+  }
+
+  &__trashIcon {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    color: $color-surface-dark;
+  }
+
+  &__prices {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__listPrice {
+    @include strikethrough2-size-regular($color-surface-dark);
+  }
+
+  &__priceDivider {
+    @include font(1rem, $font-weight-light, $color-surface-dark, 120%);
+  }
+
+  &__price {
+    @include font(0.75rem, $font-weight-medium, $color-primary, 140%);
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__quantitySelector {
+    --quantity-selector-width: 109px;
+  }
+}

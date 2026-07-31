@@ -1,0 +1,129 @@
+@use '../../../styles/globals' as *;
+
+@mixin header-solid {
+  --header-content-color: #{$color-primary-darkest};
+
+  background: $color-white;
+  border-bottom-color: $color-surface-lighter;
+}
+
+.header {
+  --header-content-color: #{$color-white};
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 fluid(48px);
+  min-height: fluid(88px);
+  gap: fluid(72px);
+  color: var(--header-content-color);
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease;
+
+  &--overlay {
+    background: transparent;
+    margin-bottom: calc(-1 * #{fluid(88px)});
+
+    @include below-desktop {
+      @include header-solid;
+
+      margin-bottom: 0;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(
+        180deg,
+        rgba(12, 12, 12, 0.34) 26.14%,
+        rgba(0, 0, 0, 0.0034) 100%
+      );
+      opacity: 1;
+      transition: opacity 200ms ease;
+      pointer-events: none;
+    }
+
+    &:hover,
+    &:focus-within {
+      @include header-solid;
+
+      &::before {
+        opacity: 0;
+      }
+    }
+  }
+
+  &--overlay#{&}--scrolled {
+    @include header-solid;
+
+    &::before {
+      opacity: 0;
+    }
+  }
+
+  &--solid {
+    @include header-solid;
+  }
+
+  @include below-desktop {
+    padding: 12px 16px;
+    min-height: 72px;
+    gap: 16px;
+  }
+
+  &__menuButton {
+    display: none;
+
+    @include below-desktop {
+      display: inline-flex;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: row;
+    align-items: center;
+    gap: fluid(24px);
+  }
+
+  &__actionIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__cartButton {
+    position: relative;
+    display: inline-flex;
+  }
+
+  &__cartBadge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    border-radius: 80px;
+    background: $color-primary-light;
+    @include paragraph-p3($color-white, $font-weight-regular, center);
+    font-size: 0.625rem;
+    line-height: 1;
+  }
+}

@@ -1,0 +1,44 @@
+@use '../../../styles/globals' as *;
+
+.toggle {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  width: 44px;
+  height: 24px;
+  padding: 2px;
+  border: none;
+  border-radius: 12px;
+  background: $color-surface-soft;
+  cursor: pointer;
+  transition: background 0.2s ease;
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  &--on {
+    background: $color-primary;
+  }
+
+  &__knob {
+    width: 20px;
+    height: 20px;
+    background: $color-white;
+    border-radius: 50%;
+    box-shadow:
+      0 1px 3px $color-shadow-sm-strong,
+      0 1px 2px $color-shadow-sm-soft;
+    transition: transform 0.2s ease;
+  }
+
+  &--on &__knob {
+    transform: translateX(20px);
+  }
+}

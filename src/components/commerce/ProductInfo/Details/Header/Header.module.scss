@@ -1,0 +1,48 @@
+@use '../../../../../styles/globals' as *;
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: fluid(34px);
+  width: 100%;
+
+  &__name {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: fluid(12px);
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  &__title {
+    @include h4-size-d($color-primary-darkest);
+    line-height: 130%;
+
+    @include mobile {
+      font-weight: $font-weight-regular;
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+      color: $color-text-strongest;
+    }
+  }
+
+  &__reference {
+    @include paragraph-p3($color-text-medium, $weight: $font-weight-light);
+    line-height: 120%;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: fluid(12px);
+    flex: none;
+
+    @include mobile {
+      display: none;
+    }
+  }
+}

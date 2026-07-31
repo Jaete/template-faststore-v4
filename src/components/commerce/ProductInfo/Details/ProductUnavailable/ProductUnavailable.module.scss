@@ -1,0 +1,85 @@
+@use '../../../../../styles/globals' as *;
+
+.productUnavailable {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: fluid(20px);
+  gap: fluid(24px);
+  width: 100%;
+  background: $color-surface-lighter;
+  border-radius: 8px;
+
+  @include mobile {
+    padding: 20px;
+    gap: 16px;
+  }
+
+  &__desc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-align: center;
+  }
+
+  &__title {
+    @include font(
+      1.25rem,
+      $font-weight-medium,
+      $color-primary-darkest,
+      130%,
+      0,
+      center
+    );
+    margin: 0;
+
+    @include mobile {
+      font-size: 1.125rem;
+      line-height: 150%;
+    }
+  }
+
+  &__description {
+    @include paragraph-p3($color-primary-darkest, $font-weight-light, center);
+    margin: 0;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+  }
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+
+    @include mobile {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+
+  &__field {
+    flex: 1;
+    min-width: 0;
+
+    > div > span {
+      display: none;
+    }
+  }
+
+  &__status {
+    min-height: 17px;
+    @include paragraph-p3($color-primary-darkest);
+    margin: 0;
+  }
+}

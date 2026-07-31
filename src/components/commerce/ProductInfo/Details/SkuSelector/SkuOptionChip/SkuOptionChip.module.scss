@@ -1,0 +1,109 @@
+@use '../../../../../../styles/globals' as *;
+
+.skuOptionChip {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  height: auto;
+  padding: 7px 12px;
+  gap: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  appearance: none;
+  background: none;
+  border: none;
+  font: inherit;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &--text {
+    @include paragraph-p3($color-surface-mid, $weight: $font-weight-light);
+    @include border(1px, $color-surface-mid);
+    text-align: center;
+  }
+
+  &--swatch {
+    padding: 3px;
+    gap: 0;
+    @include border(1px, $color-surface-mid);
+    border-radius: 50%;
+  }
+
+  &__swatch {
+    display: block;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    @include border(1px, $color-shadow-sm-strong);
+    border-radius: 50%;
+  }
+
+  &--selected {
+    @include border(1px, $color-primary);
+    background: $color-surface-lighter;
+
+    &.skuOptionChip--text {
+      @include paragraph-p3($color-primary, $weight: $font-weight-regular);
+      @include border(1px, $color-primary);
+      text-align: center;
+    }
+  }
+
+  &:not(&--selected):not(&--unavailable):hover {
+    @include border(1px, $color-primary);
+
+    &.skuOptionChip--text {
+      color: $color-primary-darkest;
+    }
+  }
+
+  &--unavailable {
+    position: relative;
+    @include border(1px, $color-surface-mid);
+
+    &.skuOptionChip--text {
+      color: $color-text-light;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(
+        to top right,
+        transparent calc(50% - 0.5px),
+        $color-surface-mid calc(50% - 0.5px),
+        $color-surface-light calc(50% + 0.5px),
+        transparent calc(50% + 0.5px)
+      );
+      pointer-events: none;
+    }
+
+    .skuOptionChip__swatch {
+      opacity: 0.4;
+    }
+
+    &.skuOptionChip--selected {
+      @include border(1px, $color-primary);
+
+      &.skuOptionChip--text {
+        color: $color-primary;
+      }
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}

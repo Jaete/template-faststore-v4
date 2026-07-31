@@ -1,0 +1,44 @@
+{
+  "$extends": ["#/$defs/base-component"],
+  "$componentKey": "ColorPalette",
+  "$componentTitle": "Paleta de Cores",
+  "title": "Paleta de Cores",
+  "description": "Dicionário global de cores da loja (nome → hex e/ou SVG/imagem do swatch). Usado na PLP e PDP para renderizar as opções de cor do produto.",
+  "type": "object",
+  "required": ["colors"],
+  "properties": {
+    "colors": {
+      "title": "Cores",
+      "description": "Cadastre, edite ou remova as cores da loja. O nome deve corresponder ao valor da especificação Cor do produto no catálogo.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "title": "Cor",
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": {
+            "title": "Nome da cor",
+            "description": "Ex.: cinza, rosa, azul marinho. Deve bater com a spec Cor (ou o nome no slug) do produto.",
+            "type": "string"
+          },
+          "hex": {
+            "title": "Hexadecimal",
+            "description": "Código da cor sólida (ex.: #8A8680). Deixe vazio se for usar apenas SVG/imagem.",
+            "type": "string"
+          },
+          "image": {
+            "title": "SVG ou imagem",
+            "description": "Selecione o SVG/imagem do swatch na galeria de mídia. Use para estampados, multicolor ou texturas quando o hexadecimal não representar a cor.",
+            "type": "string",
+            "widget": { "ui:widget": "media-gallery" }
+          }
+        }
+      }
+    }
+  },
+  "readOnly": false,
+  "writeOnly": false,
+  "deprecated": false,
+  "$abstract": false
+}

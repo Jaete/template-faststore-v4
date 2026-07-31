@@ -1,0 +1,452 @@
+{
+  "$extends": [
+    "#/$defs/base-component"
+  ],
+  "$componentKey": "InstitutionalPage",
+  "$componentTitle": "Página Institucional",
+  "type": "object",
+  "required": [
+    "groups"
+  ],
+  "properties": {
+    "groups": {
+      "title": "Grupos de navegação",
+      "type": "array",
+      "minItems": 1,
+      "default": [
+        {
+          "title": "Institucional",
+          "items": [
+            {
+              "label": "Quem Somos",
+              "content": ""
+            },
+            {
+              "label": "Políticas de Privacidade",
+              "content": ""
+            },
+            {
+              "label": "Termos e Condições",
+              "content": ""
+            },
+            {
+              "label": "Trabalhe Conosco",
+              "content": ""
+            },
+            {
+              "label": "Onde estamos",
+              "content": ""
+            }
+          ]
+        },
+        {
+          "title": "Suporte e Segurança",
+          "items": [
+            {
+              "label": "Ajuda e Suporte",
+              "content": ""
+            },
+            {
+              "label": "Políticas de Trocas e Devoluções",
+              "content": ""
+            },
+            {
+              "label": "Políticas de Frete",
+              "content": ""
+            },
+            {
+              "label": "Dúvidas Frequentes",
+              "content": ""
+            },
+            {
+              "label": "Fale Conosco",
+              "content": ""
+            }
+          ]
+        }
+      ],
+      "items": {
+        "type": "object",
+        "required": [
+          "title",
+          "items"
+        ],
+        "properties": {
+          "title": {
+            "title": "Título do grupo",
+            "type": "string"
+          },
+          "items": {
+            "title": "Itens",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "label"
+              ],
+              "properties": {
+                "label": {
+                  "title": "Nome exibido no menu",
+                  "type": "string"
+                },
+                "banner": {
+                  "title": "Banner (opcional)",
+                  "type": "object",
+                  "properties": {
+                    "imageUrl": {
+                      "title": "Imagem",
+                      "type": "string",
+                      "widget": {
+                        "ui:widget": "media-gallery"
+                      }
+                    },
+                    "alt": {
+                      "title": "Texto alternativo",
+                      "type": "string"
+                    }
+                  }
+                },
+                "content": {
+                  "title": "Conteúdo",
+                  "type": "string",
+                  "widget": {
+                    "ui:widget": "draftjs-rich-text"
+                  }
+                },
+                "blocks": {
+                  "title": "Blocos de conteúdo",
+                  "description": "Escolha o tipo de cada bloco e monte a página na ordem que quiser",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "title": "Bloco",
+                    "required": [
+                      "type"
+                    ],
+                    "properties": {
+                      "type": {
+                        "title": "Tipo de bloco",
+                        "type": "string",
+                        "enum": [
+                          "video",
+                          "files",
+                          "faq",
+                          "contact",
+                          "locations",
+                          "highlight"
+                        ],
+                        "enumNames": [
+                          "Vídeo",
+                          "Arquivos para download",
+                          "FAQ / Accordion",
+                          "Formulário de contato",
+                          "Locais (ex.: Onde estamos)",
+                          "Destaque (ex.: Fale Conosco)"
+                        ],
+                        "default": "video"
+                      }
+                    },
+                    "dependencies": {
+                      "type": {
+                        "oneOf": [
+                          {
+                            "properties": {
+                              "type": {
+                                "enum": [
+                                  "video"
+                                ]
+                              },
+                              "videoTitle": {
+                                "title": "Título do vídeo",
+                                "type": "string"
+                              },
+                              "videoThumbnailUrl": {
+                                "title": "Thumbnail",
+                                "type": "string",
+                                "widget": {
+                                  "ui:widget": "media-gallery"
+                                }
+                              },
+                              "videoUrl": {
+                                "title": "URL do vídeo",
+                                "type": "string"
+                              },
+                              "videoLogoUrl": {
+                                "title": "Logo sobreposta",
+                                "type": "string",
+                                "widget": {
+                                  "ui:widget": "media-gallery"
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "properties": {
+                              "type": {
+                                "enum": [
+                                  "files"
+                                ]
+                              },
+                              "filesTitle": {
+                                "title": "Título do bloco",
+                                "description": "Ex.: \"Manual da marca\"",
+                                "type": "string"
+                              },
+                              "filesDescription": {
+                                "title": "Texto do bloco",
+                                "type": "string"
+                              },
+                              "filesItems": {
+                                "title": "Arquivos",
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "required": [
+                                    "label"
+                                  ],
+                                  "properties": {
+                                    "label": {
+                                      "title": "Texto exibido",
+                                      "description": "Ex.: \"Manual\" ou \"Logotipo\"",
+                                      "type": "string"
+                                    },
+                                    "fileUrl": {
+                                      "title": "Arquivo",
+                                      "type": "string",
+                                      "widget": {
+                                        "ui:widget": "media-gallery"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "properties": {
+                              "type": {
+                                "enum": [
+                                  "faq"
+                                ]
+                              },
+                              "faqItems": {
+                                "title": "Perguntas e respostas",
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "required": [
+                                    "question",
+                                    "answer"
+                                  ],
+                                  "properties": {
+                                    "question": {
+                                      "title": "Pergunta",
+                                      "type": "string"
+                                    },
+                                    "answer": {
+                                      "title": "Resposta",
+                                      "type": "string",
+                                      "widget": {
+                                        "ui:widget": "draftjs-rich-text"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "properties": {
+                              "type": {
+                                "enum": [
+                                  "contact"
+                                ]
+                              },
+                              "contactShowForm": {
+                                "title": "Exibir formulário de contato?",
+                                "type": "boolean",
+                                "default": false
+                              },
+                              "contactRecipientEmail": {
+                                "title": "E-mail que vai receber as mensagens do formulário",
+                                "type": "string"
+                              },
+                              "contactMethodsTitle": {
+                                "title": "Texto acima dos contatos alternativos",
+                                "description": "Ex.: \"Ou se preferir, entre em contato através de nosso email ou telefone:\"",
+                                "type": "string"
+                              },
+                              "contactMethods": {
+                                "title": "Contatos alternativos",
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "required": [
+                                    "label"
+                                  ],
+                                  "properties": {
+                                    "icon": {
+                                      "title": "Ícone padrão (ignorado se um ícone personalizado for enviado)",
+                                      "type": "string",
+                                      "enum": [
+                                        "phone",
+                                        "email"
+                                      ],
+                                      "enumNames": [
+                                        "Telefone",
+                                        "E-mail"
+                                      ]
+                                    },
+                                    "customIconUrl": {
+                                      "title": "Ícone personalizado",
+                                      "type": "string",
+                                      "widget": {
+                                        "ui:widget": "media-gallery"
+                                      }
+                                    },
+                                    "label": {
+                                      "title": "Texto exibido",
+                                      "description": "Ex.: 0800-000-0000 ou contato@sualoja.com.br",
+                                      "type": "string"
+                                    },
+                                    "href": {
+                                      "title": "Link (opcional)",
+                                      "description": "Ex.: tel:08000000000 ou mailto:contato@sualoja.com.br",
+                                      "type": "string"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "properties": {
+                              "type": {
+                                "enum": [
+                                  "locations"
+                                ]
+                              },
+                              "locationsItems": {
+                                "title": "Locais",
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "required": [
+                                    "name"
+                                  ],
+                                  "properties": {
+                                    "name": {
+                                      "title": "Nome",
+                                      "description": "Ex.: \"Loja Centro\"",
+                                      "type": "string"
+                                    },
+                                    "imageUrl": {
+                                      "title": "Imagem",
+                                      "type": "string",
+                                      "widget": {
+                                        "ui:widget": "media-gallery"
+                                      }
+                                    },
+                                    "address": {
+                                      "title": "Endereço",
+                                      "type": "string"
+                                    },
+                                    "phone": {
+                                      "title": "Telefone exibido",
+                                      "type": "string"
+                                    },
+                                    "phoneHref": {
+                                      "title": "Link do telefone (opcional)",
+                                      "description": "Ex.: tel:1145837777",
+                                      "type": "string"
+                                    },
+                                    "hours": {
+                                      "title": "Horário de funcionamento",
+                                      "type": "string"
+                                    },
+                                    "mapsUrl": {
+                                      "title": "Link do Google Maps",
+                                      "description": "Usado no botão \"Como chegar\"",
+                                      "type": "string"
+                                    }
+                                  }
+                                }
+                              },
+                              "locationsPinIconUrl": {
+                                "title": "Ícone personalizado do endereço (opcional)",
+                                "type": "string",
+                                "widget": {
+                                  "ui:widget": "media-gallery"
+                                }
+                              },
+                              "locationsPhoneIconUrl": {
+                                "title": "Ícone personalizado do telefone (opcional)",
+                                "type": "string",
+                                "widget": {
+                                  "ui:widget": "media-gallery"
+                                }
+                              },
+                              "locationsClockIconUrl": {
+                                "title": "Ícone personalizado do horário (opcional)",
+                                "type": "string",
+                                "widget": {
+                                  "ui:widget": "media-gallery"
+                                }
+                              },
+                              "locationsDirectionsIconUrl": {
+                                "title": "Ícone personalizado do botão \"Como chegar\" (opcional)",
+                                "type": "string",
+                                "widget": {
+                                  "ui:widget": "media-gallery"
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "properties": {
+                              "type": {
+                                "enum": [
+                                  "highlight"
+                                ]
+                              },
+                              "highlightTitle": {
+                                "title": "Título do bloco",
+                                "type": "string"
+                              },
+                              "highlightText": {
+                                "title": "Texto do bloco",
+                                "type": "string",
+                                "widget": {
+                                  "ui:widget": "draftjs-rich-text"
+                                }
+                              },
+                              "highlightButtonLabel": {
+                                "title": "Texto do botão",
+                                "type": "string"
+                              },
+                              "highlightButtonHref": {
+                                "title": "Link do botão",
+                                "type": "string"
+                              },
+                              "highlightCardStyle": {
+                                "title": "Estilo em card (fundo e sombra)",
+                                "description": "Desmarque para usar linhas divisórias em vez de fundo e sombra",
+                                "type": "boolean",
+                                "default": true
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

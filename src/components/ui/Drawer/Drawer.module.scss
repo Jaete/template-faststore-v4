@@ -1,0 +1,124 @@
+@use '../../../styles/globals' as *;
+
+.drawer {
+  position: fixed;
+  inset: auto;
+  z-index: 201;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  &__overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    background: rgba($color-surface-darkest, 0.5);
+
+    &--open {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: auto;
+      animation: fs-fade-in 300ms ease-out;
+    }
+
+    &--closing {
+      pointer-events: none;
+      animation: fs-fade-out 300ms ease-in forwards;
+    }
+  }
+
+  &__panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 201;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 500px;
+    max-width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    background: $color-white;
+    box-shadow: 0 0 16px $color-shadow-sm-strong;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(100%);
+
+    &--open {
+      visibility: visible;
+      opacity: 1;
+      transform: translateX(0);
+      @include slide-in-edge(right, 150ms);
+    }
+
+    &--closing {
+      @include slide-out-edge(right, 150ms);
+    }
+
+    @include mobile {
+      width: 100%;
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 0 16px;
+    padding: 20px 0 20px;
+    border-bottom: 1px solid $color-surface-light;
+  }
+
+  &__title {
+    @include subtitle-size-1($color-primary-darkest);
+    @include mobile {
+      max-height: 38px;
+    }
+  }
+
+  &__closeIcon {
+    width: 22px;
+    height: 22px;
+    color: rgba($color-text-darkest, 0.7);
+  }
+
+  &__body {
+    flex: 1;
+    min-height: 0;
+    padding: 20px 16px 48px;
+    overflow-y: auto;
+
+    &--withFooter {
+      padding-bottom: 20px;
+    }
+  }
+
+  &__footer {
+    flex-shrink: 0;
+  }
+}
+
+@keyframes fs-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fs-fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}

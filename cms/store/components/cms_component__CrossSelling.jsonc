@@ -1,0 +1,34 @@
+{
+  "$extends": ["#/$defs/base-component"],
+  "$componentKey": "CrossSelling",
+  "$componentTitle": "Compre Junto",
+  "type": "object",
+  "properties": {
+    // Os produtos vêm do relacionamento cadastrado no admin da VTEX, em
+    // Catálogo → Relacionamento entre produtos. O tipo de relação consultado
+    // (showtogether, similars, accessories, ...) é definido pela env
+    // VTEX_CROSS_SELLING_RELATION_TYPE. Esta section existe para poder ser
+    // reordenada entre as sections da PDP; os campos abaixo são só os textos.
+    "title": {
+      "type": "string",
+      "title": "Título da seção",
+      "default": "Aproveite e compre junto",
+    },
+    "currentProductLabel": {
+      "type": "string",
+      "title": "Selo do produto atual",
+      "default": "Você está vendo este produto",
+    },
+    "totalLabel": {
+      "type": "string",
+      "title": "Texto do total",
+      "description": "Use {count} para exibir a quantidade de itens selecionados.",
+      "default": "Leve os {count} itens por",
+    },
+    "buttonLabel": {
+      "type": "string",
+      "title": "Texto do botão",
+      "default": "Comprar tudo",
+    },
+  },
+}

@@ -1,0 +1,129 @@
+@use '../../../styles/globals' as *;
+
+.videoBanner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 24px 19px 32px 13px;
+  @include gradient-surface-light();
+
+  @media (min-width: 769px) {
+    gap: 24px;
+    padding: 50px 37px;
+  }
+
+  &--compact {
+    padding: 0;
+    background: none;
+
+    @media (min-width: 769px) {
+      padding: 0;
+    }
+  }
+
+  &__title {
+    font-family: $font-family-base;
+    font-weight: $font-weight-medium;
+    font-size: 1.5rem;
+    line-height: 140%;
+    text-align: center;
+    color: $color-primary-darkest;
+    margin: 0;
+  }
+
+  &__card {
+    width: 100%;
+    max-width: 1440px;
+    background: $color-white;
+    border-radius: 8px;
+    overflow: hidden;
+
+    &--compact {
+      max-width: fluid(1020px);
+    }
+  }
+
+  &__media {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 407px;
+    @include gradient-media-overlay();
+    background-position: center;
+    background-size: cover;
+
+    @media (min-width: 769px) {
+      min-height: 551px;
+    }
+
+    &--compact {
+      min-height: 0;
+      aspect-ratio: 358 / 407;
+
+      @media (min-width: 769px) {
+        aspect-ratio: 1020 / 518;
+      }
+    }
+  }
+
+  &__player {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  &__logo {
+    position: absolute;
+    right: 5%;
+    bottom: 10%;
+    width: 113px;
+    opacity: 0.07;
+    pointer-events: none;
+
+    @media (min-width: 769px) {
+      width: 17%;
+      max-width: 232px;
+    }
+  }
+
+  &__playButton {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 93px;
+    height: 93px;
+    border: none;
+    border-radius: 50%;
+    background: radial-gradient(
+      50% 50% at 50% 50%,
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(255, 255, 255, 0.24) 100%
+    );
+    cursor: pointer;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 28.57%;
+      right: 28.57%;
+      bottom: 28.57%;
+      left: 28.57%;
+      background: $color-white;
+      border-radius: 50%;
+    }
+  }
+
+  &__playIcon {
+    position: relative;
+    z-index: 1;
+    width: 20px;
+    height: 20px;
+    color: $color-brand-blue;
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "$extends": ["#/$defs/base-component"],
+  "$componentKey": "ModelQuickFilter",
+  "$componentTitle": "Filtro Rápido por Faceta",
+  "type": "object",
+  "required": [],
+  "properties": {
+    "show": {
+      "title": "Exibir seção",
+      "description": "Desmarque para ocultar a seção inteira na página.",
+      "type": "boolean",
+      "default": true,
+    },
+    "title": {
+      "title": "Título",
+      "type": "string",
+      "default": "Filtrar por",
+    },
+    // A seção exibe os valores de UMA faceta como botões. Quais facetas existem
+    // e quais ficam visíveis é decisão do cadastro da faceta no admin da VTEX —
+    // aqui só se escolhe qual delas vira o filtro rápido.
+    "facetKey": {
+      "title": "Chave da faceta",
+      "description": "Chave técnica da faceta cujos valores viram os botões, ex.: 'brand' (marca) ou 'category-1' (categoria). Se a categoria atual não expuser essa faceta, a seção não aparece.",
+      "type": "string",
+      "default": "brand",
+    },
+    "clearOptionLabel": {
+      "title": "Texto da opção que limpa o filtro",
+      "description": "Exibido no topo do dropdown mobile, para voltar ao estado sem filtro.",
+      "type": "string",
+      "default": "Todos",
+    },
+    "placeholder": {
+      "title": "Placeholder do dropdown (mobile)",
+      "type": "string",
+      "default": "Selecione",
+    },
+    "showArrows": {
+      "title": "Exibir setas laterais",
+      "description": "Controla a exibição das setas laterais do carrossel. No mobile a seção usa um dropdown (sem setas), então só o Desktop tem efeito.",
+      "type": "object",
+      "properties": {
+        "desktop": {
+          "title": "Desktop",
+          "description": "Exibe as setas laterais no desktop/tablet.",
+          "type": "boolean",
+          "default": true,
+        },
+      },
+    },
+  },
+}

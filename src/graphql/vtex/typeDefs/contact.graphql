@@ -1,0 +1,12 @@
+extend type Mutation {
+  """
+  Envia a mensagem do formulário de Fale Conosco por e-mail via SMTP.
+  """
+  sendContactMessage(
+    name: String!
+    email: String!
+    message: String!
+    to: String!
+    recaptchaToken: String!
+  ): Boolean!
+}

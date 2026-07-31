@@ -1,0 +1,54 @@
+@use '../../../../styles/globals' as *;
+
+.categoryCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  height: 190px;
+  text-decoration: none;
+
+  &__visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 152px;
+    height: 160px;
+  }
+
+  &__ellipse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 152px;
+    height: 152px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: rgba($color-surface-soft, 0.72);
+    transition: background-color 0.2s ease;
+    z-index: 0;
+  }
+
+  &__image {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__label {
+    @include paragraph-p1($color-surface-dark, $font-weight-light, center);
+    margin: 0;
+    transition:
+      color 0.2s ease,
+      line-height 0.2s ease;
+  }
+
+  &:hover &__ellipse {
+    background: $color-surface-lightest;
+  }
+
+  &:hover &__label {
+    color: $color-brand-blue;
+    line-height: 150%;
+  }
+}

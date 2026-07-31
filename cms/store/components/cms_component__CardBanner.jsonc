@@ -1,0 +1,153 @@
+{
+  "$extends": ["#/$defs/base-component"],
+  "$componentKey": "CardBanner",
+  "$componentTitle": "Card Banner",
+  "type": "object",
+  "required": ["cards"],
+  "properties": {
+    "cards": {
+      "title": "Cards",
+      "description": "Cards promocionais exibidos lado a lado na home",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "title": "Card",
+        "required": ["title", "image"],
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Título",
+          },
+          "description": {
+            "type": "string",
+            "title": "Descrição",
+          },
+          "image": {
+            "type": "object",
+            "title": "Imagem",
+            "required": ["src"],
+            "properties": {
+              "src": {
+                "type": "string",
+                "title": "Imagem",
+                "widget": {
+                  "ui:widget": "media-gallery",
+                },
+              },
+              "alt": {
+                "type": "string",
+                "title": "Texto alternativo",
+              },
+            },
+          },
+          "href": {
+            "type": "string",
+            "title": "Link",
+            "description": "Deixe vazio para o card não ser clicável",
+          },
+          "badge": {
+            "type": "object",
+            "title": "Selo (opcional)",
+            "description": "Selo em formato de blob exibido sobre a imagem do card, ex.: uma chamada de desconto",
+            "properties": {
+              "caption": {
+                "type": "string",
+                "title": "Texto pequeno",
+                "description": "Ex.: \"com até\"",
+              },
+              "value": {
+                "type": "string",
+                "title": "Valor em destaque",
+                "description": "Ex.: \"25% OFF\"",
+              },
+            },
+          },
+        },
+      },
+    },
+    "simulator": {
+      "type": "object",
+      "title": "Banner do simulador (opcional)",
+      "description": "Banner de destaque exibido logo abaixo dos cards, com imagem e botão de CTA",
+      "properties": {
+        "label": {
+          "type": "string",
+          "title": "Label (acima do título)",
+          "description": "Ex.: \"Simulador\"",
+        },
+        "title": {
+          "type": "string",
+          "title": "Título",
+          "description": "Ex.: \"Assentos Sanitários\"",
+        },
+        "description": {
+          "type": "string",
+          "title": "Descrição",
+        },
+        "buttonLabel": {
+          "type": "string",
+          "title": "Texto do botão",
+          "default": "Saiba Mais",
+        },
+        "buttonHref": {
+          "type": "string",
+          "title": "Link do botão",
+        },
+        "image": {
+          "type": "object",
+          "title": "Imagem de fundo (desktop)",
+          "description": "Textura/ambiente de fundo do banner (sem o produto)",
+          "properties": {
+            "src": {
+              "type": "string",
+              "title": "Imagem",
+              "widget": {
+                "ui:widget": "media-gallery",
+              },
+            },
+            "alt": {
+              "type": "string",
+              "title": "Texto alternativo",
+            },
+          },
+        },
+        "imageMobile": {
+          "type": "object",
+          "title": "Imagem de fundo (mobile)",
+          "description": "Se não preencher, usa a mesma imagem do desktop",
+          "properties": {
+            "src": {
+              "type": "string",
+              "title": "Imagem",
+              "widget": {
+                "ui:widget": "media-gallery",
+              },
+            },
+            "alt": {
+              "type": "string",
+              "title": "Texto alternativo",
+            },
+          },
+        },
+        "productImage": {
+          "type": "object",
+          "title": "Foto do produto",
+          "description": "Foto do produto em destaque, flutuando sobre o fundo à direita",
+          "properties": {
+            "src": {
+              "type": "string",
+              "title": "Imagem",
+              "widget": {
+                "ui:widget": "media-gallery",
+              },
+            },
+            "alt": {
+              "type": "string",
+              "title": "Texto alternativo",
+            },
+          },
+        },
+      },
+    },
+  },
+}

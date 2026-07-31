@@ -1,0 +1,30 @@
+@use '../../../styles/globals' as *;
+
+.quantitySelector {
+  --quantity-selector-width: 100%;
+  --quantity-selector-height: 32px;
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  width: var(--quantity-selector-width);
+  height: var(--quantity-selector-height);
+  padding: 10px 16px;
+  background: $color-white;
+  border: 1px solid $color-surface-light;
+  border-radius: 4px;
+
+  &__icon {
+    width: 12px;
+    height: 12px;
+    color: $color-text-darkest;
+  }
+
+  &__quantity {
+    flex: 1;
+    @include paragraph-p2($color-surface-dark, $font-weight-regular, center);
+  }
+}

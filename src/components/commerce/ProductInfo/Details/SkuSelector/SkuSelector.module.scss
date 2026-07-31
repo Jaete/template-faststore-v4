@@ -1,0 +1,13 @@
+@use '../../../../../styles/globals' as *;
+
+.skuSelector {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: fluid(20px);
+  width: 100%;
+
+  @include mobile {
+    gap: 20px;
+  }
+}

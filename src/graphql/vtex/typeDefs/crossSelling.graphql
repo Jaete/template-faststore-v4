@@ -1,0 +1,14 @@
+extend type StoreProduct {
+  """
+  Produtos relacionados a este, cadastrados no admin da VTEX em
+  Catálogo → Relacionamento entre produtos. O tipo de relação consultado vem da
+  env `VTEX_CROSS_SELLING_RELATION_TYPE` (`showtogether` por padrão). Os ids
+  retornados são resolvidos no Intelligent Search e vêm como `StoreProduct`
+  completo — os mesmos campos de qualquer produto, incluindo os adicionados por
+  resolvers customizados.
+
+  Vazio quando o produto não tem relacionamento cadastrado ou nenhum id resolve
+  para um produto vendável.
+  """
+  crossSellingProducts: [StoreProduct!]!
+}

@@ -1,0 +1,44 @@
+@use '../../../styles/globals' as *;
+
+.carousel {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--carousel-gap, 12px);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+  cursor: grab;
+  touch-action: pan-y;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__item {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    user-select: none;
+    width: var(--carousel-item-width, auto);
+    height: var(--carousel-item-height, auto);
+  }
+
+  &--vertical {
+    flex-direction: column;
+    width: auto;
+    height: var(--carousel-height, 100%);
+    overflow-x: hidden;
+    overflow-y: auto;
+    touch-action: pan-x;
+    scroll-snap-type: y mandatory;
+  }
+}

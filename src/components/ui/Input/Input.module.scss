@@ -1,0 +1,99 @@
+@use '../../../styles/globals' as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.field {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 11px 16px;
+  background: $color-white;
+  @include border(0.8px, $color-surface-light);
+  border-radius: 4px;
+
+  &:has(input:disabled) {
+    background: rgba($color-surface-light, 0.47);
+  }
+
+  &--error {
+    @include border(1px, $color-error);
+  }
+
+  &--success {
+    border: 1px solid $color-success;
+
+    .control {
+      @include paragraph-p2($color-text-medium, $font-weight-light);
+    }
+  }
+}
+
+.control {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  @include paragraph-p3($color-text-darkest, $font-weight-light);
+
+  &::placeholder {
+    color: $color-text-light;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.fieldIcon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  color: $color-error;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 20px;
+  @include font(0.875rem, $font-weight-light, $color-text-medium, 140%);
+
+  &--success {
+    min-height: 16px;
+    @include font(0.6875rem, $font-weight-regular, $color-success, 140%);
+  }
+
+  &--compact:not(.message--success) {
+    min-height: 16px;
+    @include font(0.6875rem, $font-weight-regular, $color-error-400, 140%);
+
+    .messageIcon {
+      width: 16px;
+      height: 16px;
+      color: $color-error-400;
+    }
+  }
+}
+
+.messageIcon {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  color: $color-error;
+
+  &--success {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    color: $color-success;
+  }
+}

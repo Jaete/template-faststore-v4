@@ -1,0 +1,56 @@
+@use '../../../../styles/globals' as *;
+
+.specificationGroupTable {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+}
+
+.specificationGroupTable__columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  width: 100%;
+
+  @include desktop {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.specificationGroupTable__table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+
+  tr:nth-child(odd) {
+    background: $color-surface-lighter;
+  }
+
+  tr:nth-child(even) {
+    background: $color-white;
+  }
+}
+
+.specificationGroupTable__label {
+  width: 35%;
+  padding: 15px 16px;
+  text-align: left;
+  vertical-align: top;
+  font-weight: $font-weight-semibold;
+  font-size: 0.75rem;
+  line-height: 150%;
+  color: $color-primary-darkest;
+}
+
+.specificationGroupTable__value {
+  padding: 15px 16px;
+  vertical-align: top;
+  font-weight: $font-weight-light;
+  font-size: 0.75rem;
+  line-height: 150%;
+  color: $color-text-medium;
+}

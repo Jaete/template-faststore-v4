@@ -1,0 +1,23 @@
+@use '../../../styles/globals' as *;
+
+.logo {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  color: inherit;
+
+  img {
+    width: 110px;
+    height: 48px;
+    object-fit: contain;
+
+    @include mobile {
+      width: 84px;
+      height: 37px;
+    }
+  }
+
+  &__fallback {
+    @include font(1.25rem, $font-weight-bold, currentColor, 120%);
+  }
+}
